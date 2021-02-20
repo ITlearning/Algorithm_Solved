@@ -5,6 +5,7 @@ using namespace std;
 void newMath(char a) {
 	char *p = &a;
 	int c = 0;
+	
 	int cnt =0;
 	while(p[c] != '\0') {
 		cout << p[c] << endl;
