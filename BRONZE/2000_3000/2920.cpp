@@ -1,28 +1,28 @@
 #include <iostream>
+#include <algorithm>
 using namespace std;
 
 int main() {
+	int oct[8];
 	int fal = 0;
-	int num = 0;
+	int dal = 0;
 	for(int i = 0; i < 8; i++) {
-		int tmp = num;
-		cin >> num;
+		cin >> oct[i];
 		
-		if(tmp+1 == num) {
-			fal = 1;
-		} else if (tmp-1 == num) {
-			fal = 2;
-		} else {
-			fal = 3;
+		if(oct[i] == i + 1) {
+			fal++;
+		} else if (oct[i] == 8 - i) {
+			dal++;
 		}
 	}
 	
-	if(fal == 1)
-		cout << "ascending";
-	else if (fal == 2)
-		cout << "descending";
-	else {
-		cout << "mixed";
+	
+	if(fal == 8) {
+		cout << "ascending" << endl;
+	} else if (dal == 8){
+		cout << "descending" << endl;
+	} else {
+		cout << "mixed" << endl;
 	}
 }
 
