@@ -3,19 +3,17 @@
 using namespace std;
 
 int main() {
+	int a;
+	int b;
+	int c;
+	int cnt[10] = {0, };
 	char num;
-	int size[10] = {0};
-	int A,B,C;
-	cin >> A >> B >> C;
+	cin >> a >> b >> c;
+	int total = a * b * c;
 	
-	int total = A * B * C;
-	
-	while(total > 0) {
-		size[total % 10]++;
-		total /= 10;
+	while(total != 0) {
+		cout << total / 10 << endl;
 	}
 	
-	for(int i = 0; i < 10; i++) {
-		cout << size[i] << endl;
-	}
+	cout << num << endl;
 }

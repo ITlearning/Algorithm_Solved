@@ -1,21 +1,18 @@
 #include <iostream>
 using namespace std;
 
-int main() {
-	int N;
-	int a, b;
-	cin >> N;
-	if(N > 10) {
-		a = N / 5;
-		b = (N - (a * 5)) / 3;
-		if(b % 3 != 0) {
-			b = b % 3;
-		}
-	} else {
-		b = N / 3;
-	}
-	
-	
-	cout << a << endl;
-	cout << b <<endl;
+int main(void) {
+    int kg;
+    cin >> kg;
+
+    for( int i=kg/5; i>=0 ;i--) {
+        for(int j=0; (kg-5*i)/3 >= j ;j++){
+            if(kg ==(i*5 + j*3)) {
+                cout<<i+j;
+                return 0;
+            }
+        }
+    }
+    cout << "-1";
+    return 0;
 }
