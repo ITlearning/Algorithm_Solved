@@ -1,4 +1,4 @@
-// 작성중
+// 작성완료
 
 #include <iostream>
 #include <vector>
@@ -42,7 +42,7 @@ int main() {
 	}
 	else {
 		cout << "ERROR" << endl;
-	}
+		}
 	}
 	
 }
