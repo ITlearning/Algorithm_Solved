@@ -22,10 +22,11 @@ int main() {
 				R++;
 			}
 		}
-		if(L == R) {
-			cout << "YES" << endl;
-		} else {
-			cout << "NO" << endl;
-		}
+			if(L == R) {
+				cout << "YES" << endl;
+			} else {
+				cout << "NO" << endl;
+			}
+		
 	}
 }
