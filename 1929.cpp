@@ -14,6 +14,4 @@ int main() {
 	cin >> start >> endnum;
 	
 	isPrime(start, endnum);
-	
-	
 }
