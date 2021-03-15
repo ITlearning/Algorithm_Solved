@@ -21,6 +21,9 @@ int main() {
 	for(int i = 0; i < 3;i++) {
 		cin >> color;
 		count++;
+		if(count >= 2) {
+			
+		} 
 		if(m.find(color) != m.end()) {
 			a = m.find(color)->second;
 			cout << stotal[i] << endl;
