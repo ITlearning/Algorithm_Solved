@@ -3,11 +3,11 @@ using namespace std;
 
 void insert(int idx, int num, int arr[], int& len){
 	
-	len += 1;
 	for(int i = len - 1; i > idx; i--){
 		arr[i] = arr[i-1];
 	}
 	arr[idx] = num;
+	len++;
 	
 }
 
