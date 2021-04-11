@@ -9,7 +9,7 @@ void insert(int addr, int num){
 	dat[unused] = num;
 	pre[unused] = addr;
 	nxt[unused] = nxt[addr];
-	if(nxt[addr] != -1) pre[nxt[addr]] == unused;
+	if(nxt[addr] != -1) pre[nxt[addr]] = unused;
 	nxt[addr] = unused;
 	unused++;
 }
