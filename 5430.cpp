@@ -2,7 +2,7 @@
 using namespace std;
 
 int main() {
-	//ios::sync_with_stdio(0);
+	ios::sync_with_stdio(0);
 	cin.tie(0);
 	deque<int> dq;
 	string control;
@@ -39,10 +39,11 @@ int main() {
 				dq.pop_front();
 			}
 		}
-		
+		cout << "[";
 		for(int i = 0; i < dq.size(); i++) {
-			cout << dq[i] << ' ';
+			cout << dq[i] << ", ";
 		}
+		cout << "]";
 		dq.clear();
 		cout << '\n';
 	}
