@@ -4,49 +4,76 @@ using namespace std;
 int main() {
 	ios::sync_with_stdio(0);
 	cin.tie(0);
-	deque<int> dq;
-	string control;
+	
+	string con;
 	int T;
-	int size;
+	
 	cin >> T;
+	string type_num;
+	int num;
+	string a;
 	while(T--) {
-		cin >> control;
-		cin >> size;
-		for(int i = 0; i < size; i++) {
-			int num;
-			cin >> num;
-			dq.push_back(num);
-		}
-		int tmp = 0;
-		int orisize = size;
-		for(int i = 0; i < control.size(); i++) {
-			if(control[i] == 'R') {
-				tmp = 0;
-				size = orisize;
-				while(size != tmp) {
-					size = size - 1;
-					int a = dq[tmp];
-					dq[tmp] = dq[size];
-					dq[size] = a;
-					tmp++;
-					
+		cin >> con;
+		cin >> num;
+		cin >> type_num;
+		deque<int> dq;
+			for(int i = 0; i < type_num.length(); i++) {
+				if(type_num[i] == '[') {
+					continue;
+				} else if (type_num[i] >= '0' && type_num[i] <= '9') {
+					a += type_num[i];
+				} else if (type_num[i] == ',' || type_num[i] == ']') {
+					if(!a.empty()) {
+						dq.push_back(stoi(a));
+						a.clear();
+					}
 				}
-			} else if(control[i] == 'D') {
-				if(dq.empty()) {
-				cout << "error";
-				break;
+			}
+		
+		bool print = true;
+		bool tmp = true;
+		for(int i = 0; i < con.length(); i++) {
+			if(con[i] == 'R') {
+				if(tmp == true) {
+					tmp = false;
+				} else {
+					tmp = true;
 				}
-				dq.pop_front();
+			} else if (con[i] == 'D') {
+				if(dq.empty()){
+					print = false;
+					cout << "error" << '\n';
+					break;
+				}
+				if(tmp == false) {
+					dq.pop_back();
+				} else {
+					dq.pop_front();
+				}
 			}
 		}
-		cout << "[";
-		for(int i = 0; i < dq.size(); i++) {
-			cout << dq[i] << ", ";
+		
+		if(print) {
+			cout << "[";
+				if(tmp == false) {
+				while(!dq.empty()) {
+					cout << dq.back();
+					dq.pop_back();
+					if(!dq.empty()) {
+						cout << ",";
+					}
+				}
+				cout << "]\n";
+			} else if (tmp == true) {
+				while(!dq.empty()) {
+					cout << dq.front();
+					dq.pop_front();
+					if(!dq.empty()){
+						cout << ",";
+					}
+				}
+				cout << "]\n";
+			}
 		}
-		cout << "]";
-		dq.clear();
-		cout << '\n';
 	}
-	
-	
 }
