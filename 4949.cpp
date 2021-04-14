@@ -2,62 +2,48 @@
 using namespace std;
 
 int main() {
-	stack<char> s;
-	string text;
+	ios::sync_with_stdio(0);
+	cin.tie(0);
 	
 	while(true) {
-		bool t = true;
-		getline(cin, text, '.');
+		bool t = false;
+		string text;
+		stack<char> s;
+		getline(cin, text);
 
-		if(text[0] == '.') {
-			cin.ignore();
+		if(text.size() == 1 &&text[0] == '.') {
 			break;
 		}
 		for(int i = 0; i < text.length(); i++) {
-			if(text[i] == '(' || text[i] == '{' || text[i] == '[') {
+			if(text[i] == '(' || text[i] == '[') {
 				s.push(text[i]);
+			} else {
+					if(text[i] == ')') {
+					if(s.size() > 0 && s.top() == '(') {
+						s.pop();
+					} else {
+						t = true;
+						break;
+						}
+					} else if (text[i] == ']') {
+					if(s.size() > 0 && s.top() == '[') {
+						s.pop();
+					} else {
+						t = true;
+						break;
+					}
+				}
 			}
 			
-			if(text[i] == ')') {
-				if(s.empty()){
-					t = false;
-					break;
-				}
-				char tmp = s.top();
-				if(tmp == '(') {
-					s.pop();
-				}
-			} else if (text[i] == '}') {
-				if(s.empty()){
-					t = false;
-					break;
-				}
-				char tmp = s.top();
-				if(tmp == '{') {
-					s.pop();
-				}
-			} else if (text[i] == ']') {
-				if(s.empty()){
-					t = false;
-					break;
-				}
-				char tmp = s.top();
-				if(tmp == '[') {
-					s.pop();
-				}
-			}
+			
 		}
 		
-		if(t) {
-			if(!s.empty()) {
-				cout << "no" << endl;
-			} else {
-				cout << "yes" << endl;
-			}
+		if(s.empty() > 0 && !t) {
+			cout << "yes" << '\n';
 		} else {
-			cout << "no" << endl;
+			cout << "no" << '\n';
 		}
-		
+ 		
 	}
 	
 	
