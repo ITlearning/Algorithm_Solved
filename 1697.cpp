@@ -16,7 +16,7 @@ int main() {
 	dist[n] = 0;
 	while(dist[m] == -1) {
 		auto cur = Q.front(); Q.pop();
-		for(int nxt : {cur-1, cur+1, cur*2}) {
+		for(int nxt : {cur-1, cur+1, cur*2}) { // range-based for
 			if(nxt < 0 || nxt > 100000) continue;
 			if(dist[nxt] != -1) continue;
 			dist[nxt] = dist[cur]+1;
