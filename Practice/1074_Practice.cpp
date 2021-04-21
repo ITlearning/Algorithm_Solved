@@ -16,4 +16,4 @@ int main() {
     int n,r,c;
     cin >> n >> r >> c;
     cout << func(n,r,c);
-}
+} 
