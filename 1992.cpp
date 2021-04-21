@@ -20,9 +20,9 @@ void func(int n, int x, int y) {
         }
     }
 
-    if(a_true == n*n) { // ëª¨ë“  ìˆ˜ê°€ 1ì¼ê²½ìš°
+    if(a_true == n*n) { // ¸ğµç ¼ö°¡ 1ÀÏ °æ¿ì
         cout << 1;
-    }else if(a_false == n*n){ // ëª¨ë“  ìˆ˜ê°€ 0ì¼ ê²½ìš°
+    }else if(a_false == n*n){ // ¸ğµç ¼ö°¡ 0ÀÏ °æ¿ì
         cout << 0;
     }
     else {
@@ -36,6 +36,8 @@ void func(int n, int x, int y) {
 }
 
 int main() {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
     int n;
     string s;
     cin >> n;

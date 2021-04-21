@@ -6,8 +6,7 @@ bool vis[100001];
 bool done[100001];
 int t,n,cnt;
 
-// dfs ë°©ì‹ ê³µë¶€ í•´ë³´ì.
-
+// dfs °øºÎÇÏÀÚ.
 void dfs(int n) {
 	vis[n] = true;
 	int next = board[n];
