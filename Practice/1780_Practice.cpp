@@ -1,12 +1,13 @@
 #include <bits/stdc++.h>
 using namespace std;
+#define endl '\n'
 
-int result[3];
 int board[2200][2200];
+int result[3];
 
 bool check(int row, int col, int num) {
     int start = board[row][col];
-    for(int i = row; i < row+num; i++) {
+    for(int i = row; i < row+num; i++){
         for(int j = col; j < col+num; j++) {
             if(start != board[i][j])
                 return false;
@@ -16,15 +17,13 @@ bool check(int row, int col, int num) {
 }
 
 void divide(int row, int col, int num) {
-    if(check(row,col,num)){
+    if(check(row,col,num)) {
         result[board[row][col]]++;
-    }
-    else {
+    } else {
         int size = num / 3;
-
         for(int i = 0; i < 3; i++) {
             for(int j = 0; j < 3; j++) {
-                divide(row+size * i, col+size * j, size);
+                divide(row+size*i, col+size*j,size);
             }
         }
     }
@@ -33,17 +32,18 @@ void divide(int row, int col, int num) {
 int main() {
     ios::sync_with_stdio(0);
     cin.tie(0);
-    int n;
-    cin >> n;
 
-    for(int i = 0; i < n; i++) {
-        for(int j = 0; j < n; j++) {
+    int N;
+    cin >> N;
+    for(int i = 0; i < N; i++) {
+        for(int j = 0; j < N; j++) {
             int input;
             cin >> input;
-            input++; // -1,0,1 이니 다들 하나씩 더해줘서 배열에 안착해준다.
+            input++;
             board[i][j] = input;
         }
     }
-    divide(0,0,n);
-    cout << result[0] << '\n' << result[1] << '\n' << result[2];
+
+    divide(0,0,N);
+    cout << result[0] << '\n' << result[1] << '\n' << result[2] << '\n';
 }
