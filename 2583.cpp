@@ -8,14 +8,12 @@ bool dist[100][100];
 int dx[4] = {-1,0,1,0};
 int dy[4] = {0,1,0,-1};
 int m,n,k;
-int box = 0;
 vector<int> v;
 queue<pair<int,int>> Q;
 int main() {
     ios::sync_with_stdio(0);
     cin.tie(0);
     memset(dist,false,sizeof(dist));
-    memset(board,0,sizeof(board));
     int x1,y1,x2,y2;
     cin >> m >> n >> k;
     for(int i = 0; i < k; i++) {
@@ -27,40 +25,40 @@ int main() {
             }
         }
     }
-    
+    int cnt = 0;
     for(int i = 0; i < m; i++) {
         for(int j = 0; j < n; j++) {
-            cout << board[i][j] << ' ';
-        }
-        cout << endl;
-    }
-    cout << endl;
-    for(int i = 0; i < m; i++) {
-        int cnt = 0;
-        for(int j = 0; j < n; j++) {
-            if(board[i][j] == 1) continue;
-            
+            if(board[i][j] == 1 || dist[i][j]) continue;
+            cnt++;
+            dist[i][j] = 1;
+            int num = 0;
             Q.push({i,j});
-            dist[i][j] = true;
             while(!Q.empty()) {
-            auto cur = Q.front(); Q.pop();
-            for(int dir = 0; dir < 4; dir++) {
-                int nx = cur.X + dx[dir];
-                int ny = cur.Y + dy[dir];
-                if(nx < 0 || nx >= m || ny < 0 || ny >= n) continue;
-                if(board[nx][ny] == 1 || dist[nx][ny] == true) continue;
-                cnt++;
-                dist[nx][ny] = true;
-                Q.push({nx,ny});
+                num++;
+                auto cur = Q.front(); Q.pop();
+                for(int dir = 0; dir < 4; dir++) {
+                    int nx = cur.X + dx[dir];
+                    int ny = cur.Y + dy[dir];
+                    if(nx < 0 || nx >= m || ny < 0 || ny >= n) continue;
+                    if(dist[nx][ny] || board[nx][ny] == 1) continue;
+                    dist[nx][ny] = 1;
+                    Q.push({nx,ny});
                 }
             }
-            
+            v.push_back(num);
         }
-        v.push_back(cnt);
-    } 
-    cout << box << endl;
+    }
+    
+    
+
+    cout << cnt << endl;
     sort(v.begin(), v.end());
     for(int i = 0; i < v.size(); i++) {
-        cout << v[i] << ' ';
+        cout << v[i];
+        if(i + 1 == v.size()) {
+            break;
+        } else {
+            cout << ' ';
+        }
     }
 }
