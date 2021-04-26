@@ -7,7 +7,7 @@ int board[10];
 int arr[10];
 int isused[10];
 
-void func(int k) {
+void func(int k,int index) {
     if(k == m) {
 		 for(int i = 0; i < m; i++) {
             cout << arr[i] << ' ';
@@ -15,23 +15,14 @@ void func(int k) {
         cout << endl;
         return; // 리턴을 해서 바로 윗 단계로 올라감
 	}
-	int tmp = 0;
-	for(int i = 0; i < n; i++) {
-        if(!isused[i] && board[i] != tmp) { // 아직 사용되지 않은 경우
-            arr[k] = board[i];
-			tmp = board[i+1];
-            isused[i] = 1;
-            func(k+1);
-			
-			//isused[i] = 0;
-			for(int j = i; j < n; j++) {
-				isused[j+1] = 0;
-			}
-			
-			
-			
-        }
-    }
+	int used[10000] = {0};
+	for(int i = index; i < n; i++) {
+		if(used[board[i]] == 0){
+			used[board[i]] = 1;
+			arr[k] = board[i];
+			func(k+1, i);
+		}
+	}
 }
 
 int main() {
@@ -43,6 +34,6 @@ int main() {
 		cin >> board[i];
 	}
 	sort(board,board+n);
-    func(0);
+    func(0,0);
 	
 }
