@@ -17,7 +17,7 @@ void func(int k) {
 	}
 	int tmp = 0;
 	for(int i = 0; i < n; i++) {
-        if(!isused[i] && board[i] != tmp) { // 아직 사용되지 않은 경우
+        if(!isused[i] && board[i] != tmp ) { // 아직 사용되지 않은 경우
             arr[k] = board[i];
 			tmp = board[i];
 			isused[i+1] = 1;
