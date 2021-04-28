@@ -12,18 +12,46 @@ int tmpz;
 int tmpy;
 int tmpx;
 int anx;
-int any;
+int anh;
 int anz;
 struct ThreeBox {
 	int x,y,z;
 };
+
+
+void bfs() {
+		queue<ThreeBox> Q;
+		Q.push({tmpx,tmpy,tmpz});
+		while(!Q.empty()) {
+		int x = Q.front().x;
+		int y = Q.front().y;
+		int z = Q.front().z;
+		Q.pop();
+		
+		if(x == anx && y == anh && z == anz) {
+			cout << "Escaped in " << dist[x][y][z] << "minute(s)." << endl;
+			return;
+		}
+		
+	
+		for(int i = 0; i < 6; i++) {
+			int nx = x + dx[i];
+			int ny = y + dy[i];
+			int nz = z + dz[i];
+			if(nx < 0 || nx >= l || ny < 0 || ny >= r || nz < 0 || nz >= c) continue;
+			if(dist[nx][ny][nz] || board[nx][ny][nz] == '#') continue;
+			Q.push({nx,ny,nz});
+			dist[nx][ny][nz] = dist[x][y][z]+1;
+			}
+		}
+	cout << "Teapped!" << endl;
+}
 
 int main() {
 	ios::sync_with_stdio(0);
 	cin.tie(0);
 	while(true) {
 		memset(dist, false, sizeof(dist));
-		string str;
 		cin >> l >> r >> c;
 		if(l == 0 && r == 0 && c == 0) {
 			return 0;
@@ -36,42 +64,13 @@ int main() {
 					cin >> board[i][j][k];
 					if(board[i][j][k] == 'S') {
 						tmpx = i; tmpy = j; tmpz = k;
-						dist[i][j][k] == 1;
 					}else if(board[i][j][k] == 'E') {
-						anx = i;
-						any = j;
-						anz = k;
+						anx = i;anh = j;anz = k;
 					}
 				}
 			}
 		}
-		queue<ThreeBox> Q;
-		Q.push({tmpx,tmpy,tmpz});
-		bool t = true;
-		while(!Q.empty()) {
-		int x = Q.front().x;
-		int y = Q.front().y;
-		int z = Q.front().z;
-		Q.pop();
-		for(int i = 0; i < 6; i++) {
-			int nx = x + dx[i];
-			int ny = y + dy[i];
-			int nz = z + dz[i];
-			if(nx < 0 || nx >= l || ny < 0 || ny >= r || nz < 0 || nz >= c) continue;
-			if(board[nz][ny][nx] == '#' || dist[nz][ny][nx] > 0) continue;
-			if(x == anx && y == any && z == anz) {
-				cout << "Escaped in " << dist[x][y][z] << "minute(s)." << endl;
-				t = false;
-				continue;
-			}
-			Q.push({nx,ny,nz});
-			dist[nx][ny][nz] = dist[x][y][z]+1;
-			}
-		}
-		if(t) {
-			cout << "Teapped!" << endl;
-		}
+		bfs();
 		//Q.clear();
 	}
-	
 }
