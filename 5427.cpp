@@ -3,7 +3,7 @@ using namespace std;
 #define X first
 #define Y second
 
-string board[1002];
+char board[1002][1002];
 int dist[1002][1002];
 int pdist[1002][1002];
 int r, c;
@@ -15,18 +15,20 @@ int main() {
 	cin.tie(0);
 	
 	cin >> r >> c;
-	for(int i = 0; i < r; i++) {
-		cin >> board[i];
+	for(int i = 0; i < c; i++) {
+		for(int j = 0; j < r; j++) {
+			cin >> board[i][j];
+		}
 	}
 	queue<pair<int,int>> Q1;
 	queue<pair<int,int>> Q2;
-	for(int i = 0; i < r; i++){
-		fill(dist[i], dist[i]+c, -1);
-		fill(pdist[i],pdist[i]+c, -1);
+	for(int i = 0; i < c; i++){
+		fill(dist[i], dist[i]+r, -1);
+		fill(pdist[i],pdist[i]+r, -1);
 	} 
 	
-	for(int i = 0; i < r; i++) {
-		for(int j = 0; j < c; j++) {
+	for(int i = 0; i < c; i++) {
+		for(int j = 0; j < r; j++) {
 			if(board[i][j] == '*') {
 				Q1.push({i,j});
 				dist[i][j] = 0;
