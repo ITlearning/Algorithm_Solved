@@ -27,33 +27,75 @@ int main() {
             }
         }
     }
+    int Gak_move[4] = {};
     while(!Q.empty()) {
         auto cur = Q.front(); Q.pop();
         if(board[cur.X][cur.Y] == 1) {
             int move = 0;
+            
             int cnt = 0;
             int tmpx = cur.X;
             int tmpy = cur.Y;
             while(cnt < 4) {
                 if(cnt == 0) {
                     if(tmpy <= m && board[tmpx][tmpy+1] != 6) {
-                        board[tmpx][tmpy++]; // 오른쪽
+                        tmpy++; // 오른쪽
                         move++;
                     } else {
                         tmpx = cur.X;
                         tmpy = cur.Y;
+                        Gak_move[0] = move;
+                        move = 0;
                         cnt++;
-                        
                     }
                 }else if (cnt == 1) {
-                    board[tmpx++][tmpy]; // 아래
+                    if(tmpx <= n && board[tmpx+1][tmpy] != 6) {
+                       tmpx++; // 아래
+                       move++;
+                    } else {
+                        tmpx = cur.X;
+                        tmpy = cur.Y;
+                        Gak_move[1] = move;
+                        move = 0;
+                        cnt++;
+                    }
                 } else if (cnt == 2) {
-                    board[tmpx][tmpy--]; // 왼쪽
+                    if(tmpy > 0 && board[tmpx][tmpy-1] != 6) {
+                        tmpy--; // 왼쪽
+                        move++;
+                    } else {
+                        tmpx = cur.X;
+                        tmpy = cur.Y;
+                        Gak_move[2] = move;
+                        move = 0;
+                        cnt++;
+                    }
                 } else if (cnt == 3) {
-                    board[tmpx--][tmpy]; // 위
+                    if(tmpx > 0 && board[tmpx-1][tmpy] != 6) {
+                        tmpx--; // 위
+                        move++;
+                    } else {
+                        tmpx = cur.X;
+                        tmpy = cur.Y;
+                        Gak_move[3] = move;
+                        move = 0;
+                        cnt++;
+                    } 
                 }
             }
         }  
     }
     
+    int min = 0;
+    for(int i = 0; i < 4; i++) {
+        if(Gak_move[i] <= Gak_move[i+1]) {
+            min = i;
+        } else {
+            min = i+1;
+        }
+    }
+
+    if(min == 1) {
+
+    }
 }
