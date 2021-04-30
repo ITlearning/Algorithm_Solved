@@ -69,9 +69,9 @@ int main()
             }
             Q.pop();
         } else if(cur.Y == 2) {
-            
+            // 2 구현해야함..하..
         } else if(cur.Y == 3) {
-
+            // 얘는 뭐 건들수도 없음..
         } else if(cur.Y == 4) {
 
         } else if(cur.Y == 5) {
