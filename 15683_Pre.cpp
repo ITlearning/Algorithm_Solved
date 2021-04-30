@@ -9,9 +9,10 @@ int cctv_x, cctv_y;
 int lit_x, lit_y;
 int dx[4] = {1, 0, -1, 0};
 int dy[4] = {0, 1, 0, -1};
-int dx2[2] = {-1,1};
-int dy2[2] = {};
+int d1[4] = {-1,1,0,0};
+int d2[4] = {0,0,-1,1};
 int ld[4];
+int ad[2];
 int cY[9];
 int zero = 0;
 int main()
@@ -33,7 +34,7 @@ int main()
 
     while(!Q.empty()) {
         auto cur = Q.front();
-        if(cur.Y == 1) {
+        if(cur.Y == 1) { 
             for(int i = 0; i < 4; i++) {
                 int tx = cur.X.X;
                 int ty = cur.X.Y;
@@ -48,30 +49,27 @@ int main()
                 }
                 cnt -= 1;
                 ld[i] = cnt;
-                cout << "cnt = " << cnt << endl;
             }
-            int m = 0;
+            int k = 0;
             for(int i = 1; i < 3; i++) {
-                if(ld[m] < ld[i]) {
-                    m = i;
+                if(ld[k] < ld[i]) {
+                    k = i;
                 }
             }
-            cout <<"M:"<< m << endl;
             int ax = cur.X.X;
             int ay = cur.X.Y;
-            while(ax >= 0 && ax <= n-1 && ay >= 0 && ay <= m-1) {
-                ax += dx[m];
-                ay += dy[m];
-                cout << "ax : " << ax << endl;
-                cout << "ay: " << ay << endl;
-                cout << endl;
-                if(board[ax][ay] != 6) {
-                    board[ax][ay] = '#';
+            while(ax >= 0 && ax <= n && ay >= 0 && ay <= m) {
+                ax += dx[k];
+                ay += dy[k];
+                if(board[ax][ay] != 6 || board[ax][ay] == 0) {
+                    board[ax][ay] = 9;
+                } else if (board[ax][ay] <= 5) {
+                    continue;
                 }
             }
-
+            Q.pop();
         } else if(cur.Y == 2) {
-
+            
         } else if(cur.Y == 3) {
 
         } else if(cur.Y == 4) {
@@ -79,7 +77,7 @@ int main()
         } else if(cur.Y == 5) {
 
         }
-        Q.pop();
+        
     }
 
     for(int i = 0; i < n; i++) {
