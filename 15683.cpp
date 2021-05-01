@@ -1,206 +1,82 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define X first
+#define X first;
 #define Y second
 
-int board[9][9];
-int n, m;
-int cctv_x, cctv_y;
-int lit_x, lit_y;
-int dx[4] = {1, 0, -1, 0};
-int dy[4] = {0, 1, 0, -1};
-int cctv_locationX[9];
-int cctv_locationY[9];
-int main()
-{
+int dx[4] = {1,0,-1,0};
+int dy[4] = {0,1,0,-1}; // 인덱스 0,1,2,3이 남,동,북,서. 시계방향으로 돌아가는것.
+int n,m;
+int board1[10][10]; // 입력으로 주어지느 사무실의 모양을 저장할 변수
+int board2[10][10]; // cctv의 방향을 정한 후에 cctv의 감시영역에 걸리는 빈칸은 값을 7로 바꾸는 작업을 수행 할 변수
+vector<pair<int,int>> cctv;
+
+bool OOB(int a, int b) {
+    return a < 0 || a >= n || b < 0 || b >= m;
+}
+
+void upd(int x, int y, int dir) { 
+    dir %= 4;
+    while(1) {
+        x += dx[dir];
+        y += dy[dir];
+        if(OOB(x,y)|| board2[x][y] == 6) return;
+        if(board2[x][y] != 0) continue;
+        board2[x][y] = 7; 
+    }
+}
+// upd 설명
+// (x,y) 에서 dir방향으로 진행하면서 벽을 만날 때 까지 지나치는 모든 빈 칸을 7로 바꾼다.
+
+
+
+int main(void) {
     ios::sync_with_stdio(0);
     cin.tie(0);
-    queue<pair<int, int>> Q;
     cin >> n >> m;
-    int location = 0;
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < m; j++)
-        {
-            cin >> board[i][j];
-            if (board[i][j] > 0 && board[i][j] <= 5)
-            {
-                cctv_locationX[location] = i;
-                cctv_locationY[location] = j;
-                location++;
-                Q.push({i, j});
-            }
-            else if (board[i][j] == 6)
-            {
-                lit_x = i;
-                lit_y = j;
-            }
-        }
-    }
-    int Gak_move[4] = {};
-    int box_size = 0;
-    while (!Q.empty())
-    {
-        auto cur = Q.front();
-        
-        Q.pop();
-        if (board[cur.X][cur.Y] == 1)
-        {
-            int move = 0;
-
-            int cnt = 0;
-            int tmpx = cur.X;
-            int tmpy = cur.Y;
-            while (cnt < 4)
-            {
-                if (cnt == 0)
-                {
-                    if (tmpy <= m && board[tmpx][tmpy + 1] != 6)
-                    {
-                        tmpy++; // 오른쪽
-                        move++;
-                    }
-                    else
-                    {
-                        tmpx = cur.X;
-                        tmpy = cur.Y;
-                        Gak_move[0] = move;
-                        move = 0;
-                        cnt++;
-                    }
-                }
-                else if (cnt == 1)
-                {
-                    if (tmpx <= n && board[tmpx + 1][tmpy] != 6)
-                    {
-                        tmpx++; // 아래
-                        move++;
-                    }
-                    else
-                    {
-                        tmpx = cur.X;
-                        tmpy = cur.Y;
-                        Gak_move[1] = move;
-                        move = 0;
-                        cnt++;
-                    }
-                }
-                else if (cnt == 2)
-                {
-                    if (tmpy > 0 && board[tmpx][tmpy - 1] != 6)
-                    {
-                        tmpy--; // 왼쪽
-                        move++;
-                    }
-                    else
-                    {
-                        tmpx = cur.X;
-                        tmpy = cur.Y;
-                        Gak_move[2] = move;
-                        move = 0;
-                        cnt++;
-                    }
-                }
-                else if (cnt == 3)
-                {
-                    if (tmpx > 0 && board[tmpx - 1][tmpy] != 6)
-                    {
-                        tmpx--; // 위
-                        move++;
-                    }
-                    else
-                    {
-                        tmpx = cur.X;
-                        tmpy = cur.Y;
-                        Gak_move[3] = move;
-                        move = 0;
-                        cnt++;
-                    }
-                }
-            }
-
-            int min = 0;
-            for (int i = 0; i < 4; i++)
-            {
-                if (Gak_move[i] <= Gak_move[i + 1])
-                {
-                    min = i;
-                }
-                else
-                {
-                    min = i + 1;
-                }
-            }
-
-            if (min == 0)
-            { //오른쪽
-                for (int i = cctv_locationY[0]; i < m; i++)
-                {
-                    if (board[cctv_x][i] != 6)
-                    {
-                        board[cctv_x][i] = '#';
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
-            }
-            else if (min == 1)
-            { //아래
-                for (int i = cctv_x; i < n; i++)
-                {
-                    if (board[i][cctv_y] != 6)
-                    {
-                        board[i][cctv_y] = '#';
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
-            }
-            else if (min == 2)
-            { //왼쪽
-                for (int i = cctv_y; i >= 0; i--)
-                {
-                    if (board[cctv_x][i] != 6)
-                    {
-                        board[cctv_x][i] = '#';
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
-            }
-            else if (min == 3)
-            { //위
-                for (int i = cctv_x; i >= 0; i--)
-                {
-                    if (board[i][cctv_y] != 6)
-                    {
-                        board[i][cctv_y] = '#';
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
-            }
-            
-            for (int i = 0; i < n; i++)
-            {
-                for (int j = 0; j < m; j++)
-                {
-                    if (board[i][j] == 0)
-                    {
-                        box_size++;
-                    }
-                }
-            }
+    int mn = 0; // 사각지대의 크기를 저장하는 변수. 0 개수 세는 것
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < m; j++) {
+            cin >> board1[i][j];
+            if(board1[i][j] != 0 && board1[i][j] != 6)
+                cctv.push_back({i,j});
+            if(board1[i][j] == 0) mn++;
         }
     }
 
-    cout << box_size << endl;
+    for(int tmp = 0; tmp < (1<<(2*cctv.size())); tmp++) {
+        for(int i = 0; i < n; i++)
+            for(int j = 0; j < m; j++)// 4로 나눈 나머지를 뽑아 방향으로 사용하고
+                board2[i][j] = board1[i][j];
+        int brute = tmp;
+        for(int i = 0; i < cctv.size(); i++) {
+            int dir = brute % 4;  
+            brute /=4;
+            int x = cctv[i].X;
+            int y = cctv[i].Y;
+            if(board1[x][y] == 1) {
+                upd(x,y,dir);
+            } else if (board1[x][y] == 2) {
+                upd(x,y,dir);
+                upd(x,y,dir+2);
+            } else if (board1[x][y] == 3) {
+                upd(x,y,dir);
+                upd(x,y,dir+1);
+            } else if (board1[x][y] == 4) {
+                upd(x,y,dir);
+                upd(x,y,dir+1);
+                upd(x,y,dir+2);
+            } else {
+                upd(x,y,dir);
+                upd(x,y,dir+1);
+                upd(x,y,dir+2);
+                upd(x,y,dir+3);
+            } 
+        }
+        int val = 0;
+        for(int i = 0; i < n; i++)
+            for(int j = 0; j < m; j++)
+                val += (board2[i][j]==0);
+        mn = min(mn,val);
+    }
+    cout << mn;
 }
