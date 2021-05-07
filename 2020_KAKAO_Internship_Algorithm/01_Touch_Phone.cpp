@@ -2,10 +2,8 @@
 
 /* 정해진 패턴대로 누르기 */
 
-
 #include <string>
 #include <vector>
-
 #define X first
 #define Y second
 using namespace std;
