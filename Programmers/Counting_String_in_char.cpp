@@ -1,12 +1,12 @@
-// ë¬¸ìžì—´ ë‚´ pì™€ yì˜ ê°œìˆ˜
+// ¹®ÀÚ¿­ ³» p¿Í yÀÇ °³¼ö
 /* 
- ëŒ€ë¬¸ìžì™€ ì†Œë¬¸ìžê°€ ì„žì—¬ìžˆëŠ” ë¬¸ìžì—´ sê°€ ì£¼ì–´ì§‘ë‹ˆë‹¤. 
- sì— 'p'ì˜ ê°œìˆ˜ì™€ 'y'ì˜ ê°œìˆ˜ë¥¼ ë¹„êµí•´ ê°™ìœ¼ë©´ True, ë‹¤ë¥´ë©´ Falseë¥¼ return í•˜ëŠ” solutionë¥¼ ì™„ì„±í•˜ì„¸ìš”. 
- 'p', 'y' ëª¨ë‘ í•˜ë‚˜ë„ ì—†ëŠ” ê²½ìš°ëŠ” í•­ìƒ Trueë¥¼ ë¦¬í„´í•©ë‹ˆë‹¤. 
- ë‹¨, ê°œìˆ˜ë¥¼ ë¹„êµí•  ë•Œ ëŒ€ë¬¸ìžì™€ ì†Œë¬¸ìžëŠ” êµ¬ë³„í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.
+ ´ë¹®ÀÚ¿Í ¼Ò¹®ÀÚ°¡ ¼¯¿©ÀÖ´Â ¹®ÀÚ¿­ s°¡ ÁÖ¾îÁý´Ï´Ù. 
+ s¿¡ 'p'ÀÇ °³¼ö¿Í 'y'ÀÇ °³¼ö¸¦ ºñ±³ÇØ °°À¸¸é True, ´Ù¸£¸é False¸¦ return ÇÏ´Â solution¸¦ ¿Ï¼ºÇÏ¼¼¿ä. 
+ 'p', 'y' ¸ðµÎ ÇÏ³ªµµ ¾ø´Â °æ¿ì´Â Ç×»ó True¸¦ ¸®ÅÏÇÕ´Ï´Ù. 
+ ´Ü, °³¼ö¸¦ ºñ±³ÇÒ ¶§ ´ë¹®ÀÚ¿Í ¼Ò¹®ÀÚ´Â ±¸º°ÇÏÁö ¾Ê½À´Ï´Ù.
 */
 
-// ì˜ˆë¥¼ ë“¤ì–´ sê°€ "pPoooyY"ë©´ trueë¥¼ returní•˜ê³  "Pyy"ë¼ë©´ falseë¥¼ returní•©ë‹ˆë‹¤.
+// ¿¹¸¦ µé¾î s°¡ "pPoooyY"¸é true¸¦ returnÇÏ°í "Pyy"¶ó¸é false¸¦ returnÇÕ´Ï´Ù.
 
 #include <string>
 #include <iostream>
@@ -30,7 +30,7 @@ bool solution(string s)
     }else if (a != b){
         answer = false;
     }
-    // [ì‹¤í–‰] ë²„íŠ¼ì„ ëˆ„ë¥´ë©´ ì¶œë ¥ ê°’ì„ ë³¼ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
+    // [?‹¤?–‰] ë²„íŠ¼?„ ?ˆ„ë¥´ë©´ ì¶œë ¥ ê°’ì„ ë³? ?ˆ˜ ?žˆ?Šµ?‹ˆ?‹¤.
     cout << a << ' ' << b << endl;
 
     return answer;
