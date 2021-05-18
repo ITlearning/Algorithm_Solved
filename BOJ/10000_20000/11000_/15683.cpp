@@ -4,10 +4,10 @@ using namespace std;
 #define Y second
 
 int dx[4] = {1,0,-1,0};
-int dy[4] = {0,1,0,-1}; // �ε��� 0,1,2,3�� ��,��,��,��. �ð�������� ���ư��°�.
+int dy[4] = {0,1,0,-1}; 
 int n,m;
-int board1[10][10]; // �Է����� �־����� �繫���� ����� ������ ����
-int board2[10][10]; // cctv�� ������ ���� �Ŀ� cctv�� ���ÿ����� �ɸ��� ��ĭ�� ���� 7�� �ٲٴ� �۾��� ���� �� ����
+int board1[10][10]; 
+int board2[10][10]; 
 vector<pair<int,int>> cctv;
 
 bool OOB(int a, int b) {
@@ -24,8 +24,7 @@ void upd(int x, int y, int dir) {
         board2[x][y] = 7; 
     }
 }
-// upd ����
-// (x,y) ���� dir�������� �����ϸ鼭 ���� ���� �� ���� ����ġ�� ��� �� ĭ�� 7�� �ٲ۴�.
+
 
 
 
@@ -33,7 +32,7 @@ int main(void) {
     ios::sync_with_stdio(0);
     cin.tie(0);
     cin >> n >> m;
-    int mn = 0; // �簢������ ũ�⸦ �����ϴ� ����. 0 ���� ���� ��
+    int mn = 0; 
     for(int i = 0; i < n; i++) {
         for(int j = 0; j < m; j++) {
             cin >> board1[i][j];
@@ -45,7 +44,7 @@ int main(void) {
 
     for(int tmp = 0; tmp < (1<<(2*cctv.size())); tmp++) {
         for(int i = 0; i < n; i++)
-            for(int j = 0; j < m; j++)// 4�� ���� �������� �̾� �������� ����ϰ�
+            for(int j = 0; j < m; j++)
                 board2[i][j] = board1[i][j];
         int brute = tmp;
         for(int i = 0; i < cctv.size(); i++) {

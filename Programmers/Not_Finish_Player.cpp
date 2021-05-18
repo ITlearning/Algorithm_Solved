@@ -8,13 +8,13 @@ using namespace std;
 string solution(vector<string> participant, vector<string> completion) {
     sort(participant.begin(), participant.end());
     sort(completion.begin(), completion.end());
-    // ì˜¤ë¥¸ì°¨ìˆœ ì •ë ¬ì„ í†µí•´, ê°™ì€ ìœ„ì¹˜ì— ìˆëŠ” ì„ ìˆ˜ë“¤ì„ ë¹„êµí•œë‹¤.
+    // ¿À¸¥Â÷¼ø Á¤·ÄÀ» ÅëÇØ, °°Àº À§Ä¡¿¡ ÀÖ´Â ¼±¼öµéÀ» ºñ±³ÇÑ´Ù.
     for(int i = 0; i < completion.size(); ++i) {
         if(participant[i] != completion[i]) {
             return participant[i];
         }
     }
-    // ë¹„êµ í›„ ë§Œì•½ ê°™ì€ ìë¦¬ì— ë‹¤ë¥¸ ì´ë¦„ì´ ìˆëŠ” ì„ ìˆ˜ì¼ ê²½ìš° ì™„ì£¼ë¥¼ ëª»í•œ ì„ ìˆ˜ì´ê¸°ë•Œë¬¸ì— ì¶œë ¥ì„ í•´ì¤€ë‹¤.
+    // ºñ±³ ÈÄ ¸¸¾à °°Àº ÀÚ¸®¿¡ ´Ù¸¥ ÀÌ¸§ÀÌ ÀÖ´Â ¼±¼öÀÏ °æ¿ì ¿ÏÁÖ¸¦ ¸øÇÑ ¼±¼öÀÌ±â¶§¹®¿¡ Ãâ·ÂÀ» ÇØÁØ´Ù.
     return participant[participant.size()-1];
-	// ê·¸ê²Œ ì•„ë‹ˆê³  ì•„ì–˜ ì™„ì£¼ìì— ì—†ëŠ” ì„ ìˆ˜ë¼ë©´ ë§ˆì§€ë§‰ ì„ ìˆ˜ë¥¼ ì¶œë ¥í•´ì¤€ë‹¤.
+	// ±×°Ô ¾Æ´Ï°í ¾Æ¾ê ¿ÏÁÖÀÚ¿¡ ¾ø´Â ¼±¼ö¶ó¸é ¸¶Áö¸· ¼±¼ö¸¦ Ãâ·ÂÇØÁØ´Ù.
 }
