@@ -1,23 +1,31 @@
 # 에디터
 
-text = input()
-n = int(input())
-cursor = 0
-for i in range(n) :
-    con = input()
-    if con == "L" :
-        if cursor >= 0 :
-            cursor += 1
-    elif con == "D" :
-        if cursor <= len(text) - 1 :
-            cursor -= 1
-    elif con == "B" :
-        text.replace(text[cursor], "")
-        cursor -= 1
-        #if cursor != 0 :
-            
-    elif con == "P" :
-        t = input()
-        text.replace(text[cursor-1], t)
+import sys
+        # sys.stdin.readline() - 문자열 입력 받기
+        # 이렇게 해야 시간초과가 발생하지 않는다.
+        # rstrip() 문자열 오른쪽에서부터 제거합니다.
+strings = sys.stdin.readline().rstrip()
+commands = int(sys.stdin.readline().rstrip())
+left = []
+right = []
 
-print(text)
+for i in range(len(strings)) :
+    left.append(strings[i])
+
+for i in range(commands) :
+    commands = sys.stdin.readline().rstrip().split()
+    if commands[0] == "P" :
+        left.append(commands[1])
+    elif commands[0] == 'L' :
+        if len(left) :
+            move = left.pop()
+            right.append(move)
+    elif commands[0] == 'D' :
+        if len(right) :
+            move = right.pop()
+            left.append(move)
+    else :
+        if len(left) :
+            left.pop()
+
+print(''.join(left+right[::-1]))
