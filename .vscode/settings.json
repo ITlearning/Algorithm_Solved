@@ -7,5 +7,6 @@
     },
     "python.pythonPath": "/Library/Developer/CommandLineTools/usr/bin/python3",
     "python.linting.pylintEnabled": true,
-    "python.linting.enabled": true
+    "python.linting.enabled": true,
+    "C_Cpp.errorSquiggles": "Disabled"
 }
