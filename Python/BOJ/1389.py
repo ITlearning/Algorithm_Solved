@@ -1,32 +1,33 @@
-from sys import stdin
+#플로이드 - 워셜 알고리즘
+
 from math import inf
-n,m = map(int,stdin.readline().split())
-s = [[0]* n for i in range(n)]
+n,m = map(int, input().split())
 
-for i in range(m):
-    a,b = map(int, stdin.readline().split())
-    s[a-1][b-1] = 1
-    s[b-1][a-1] = 1
-for k in range(n):
-    for i in range(n):
-        for j in range(n):
-            if i == j :
-                continue
-            elif s[i][k] and s[k][j]:
-                if s[i][j] == 0:
-                    s[i][j] = s[i][k] + s[k][i]
-                else:
-                    s[i][j] = min(s[i][j],s[i][k] + s[k][j])
-result = inf
+board = [[inf] * n for _ in range(n)]
+
 for i in range(n) :
-    sum = 0
-    for j in range(n) :
-        sum += s[i][j]
-    if result > sum:
-        result = sum
-        p = i
-print(p+1)
+    board[i][i] = 0
 
+for _ in range(m) :
+    start, end = map(int, input().split())
+    board[start-1][end-1] = 1
+    board[end-1][start-1] = 1
+
+# 모든 경우를 체크하면서 최솟값을 업데이트 해주는 알고리즘
+for k in range(n):
+    for a in range(n):
+        for b in range(n):
+            board[a][b] = min(board[a][b], board[a][k] + board[k][b])
+
+answer = inf
+index = inf
+
+for i in range(len(board)):
+    if sum(board[i]) < answer:
+        answer = sum(board[i])
+        index = i
+
+print(index+1)
 # https://pacific-ocean.tistory.com/278
 
 # https://donghak-dev.tistory.com/10
