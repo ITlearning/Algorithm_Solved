@@ -3,7 +3,6 @@
 def solution(s):
     length = []
     result = ""
-    max_line = 0
     
     if len(s) == 1:
         return 1
@@ -27,3 +26,5 @@ def solution(s):
         result = ""
         
     return min(length)
+
+    # 출처 - https://url.kr/okrnv7 
