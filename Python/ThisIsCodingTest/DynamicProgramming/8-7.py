@@ -9,8 +9,8 @@ for i in range(n):
 d = [10001] *(m+1)
 
 d[0] = 0
-for i in range(n):
-    for j in range(array[i], m+1):
+for i in range(n): # i는 각각의 화폐단위를 의미
+    for j in range(array[i], m+1): # j는 각각의 금액을 의미
         if d[j-array[i]] != 10001:
             d[j] = min(d[j - array[i]] + 1)
 

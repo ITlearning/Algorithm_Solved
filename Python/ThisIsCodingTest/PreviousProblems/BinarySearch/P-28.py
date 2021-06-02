@@ -19,4 +19,5 @@ result = binary_search(board,n,0,n)
 if result == None :
     print("-1")
 else:
+    
     print(result)
