@@ -12,7 +12,7 @@ for a in range(1, n+1):
         if a == b:
             graph[a][b] = 0
 
-# 긱 간선에 대한 정보를 입력 받아서 그 값으로 초기화 한다.
+# 각 간선에 대한 정보를 입력 받아서 그 값으로 초기화 한다.
 for _ in range(m):
     a,b,c = map(int,input().split())
     graph[a][b] = c
