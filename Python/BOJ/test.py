@@ -1,7 +1,7 @@
-t = input()
+pro = [93, 30, 55]
 
-for i in range(2) :
-    a = input()
-    if a == 'E' :
-        t = t.replace(t[0], "")
-print(t)
+spped = [1, 30, 5]
+
+pro[0] += spped[1]
+
+print(pro[0])
