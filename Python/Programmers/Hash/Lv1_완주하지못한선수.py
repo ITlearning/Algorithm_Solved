@@ -1,3 +1,5 @@
+from collections import deque
+
 def solution(participant, completion):
     answer = ''
     participant.sort()
