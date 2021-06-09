@@ -6,6 +6,8 @@ from collections import Counter
 arr = [3,2,4,4,2,5,2,5,5]
 b = Counter(arr)
 t = True
+
+
 for key,val in dict(b).items():
     if val >= 2 :
         print(val, end=" ")
