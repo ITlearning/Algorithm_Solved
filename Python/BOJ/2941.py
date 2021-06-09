@@ -1,30 +1,11 @@
 # 크로아티아 알파벳
 
 cAlphabet = ["c=", "c-", "dz=", "d-", "lj", "nj", "s=", "z="]
-dAl = ["c", "d", "l", "n", "s", "z"]
-op = ["-","="]
 
 text = input()
-tmp = ""
-cnt = 0
-i = 0
-while i < len(text):
-    tmp += text[i]
-    if tmp in op:
-        tmp = ""
-        i += 1
-        if tmp in dAl:
-        i += 1
-        tmp += text[i]
-            if tmp in cAlphabet:
-                cnt += 1
-                tmp = ""
-            tmp += text[i]
-            if tmp in cAlphabet:
-                cnt += 1
-                tmp = ""
-    else:
-        cnt += 1
-        tmp = ""
+# 와;; 맞네 이거네. 저 위에 알파벳에 어울리는 글자에 별표를 해두면 그게 숫자이니까 와,,
+# 문자 수 찾기 문제에선 별 표시 좋은 것 같다
+for i in cAlphabet:
+    text = text.replace(i, "*")
 
-print(cnt)
+print(len(text))
