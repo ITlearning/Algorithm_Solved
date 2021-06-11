@@ -6,10 +6,6 @@ input = sys.stdin.readline
 t = int(input())
 board = []
 
-def change(i):
-    board[i], board[i+1] = board[i+1], board[i]
-    return 1
-
 for _ in range(t):
     name, korean, english, math = input().split()
     board.append([name, korean, english, math])

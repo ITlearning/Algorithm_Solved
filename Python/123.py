@@ -1,3 +1,1 @@
-t = "Hello"
-
-t.replace("H","")
+print(5/3)
