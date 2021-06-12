@@ -1,5 +1,4 @@
 def solution(number, k):
-    answer = ''
     cnt = 0
     num = list(number)
     board = [num[0]]
