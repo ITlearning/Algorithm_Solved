@@ -1,18 +1,33 @@
 # DFS와 BFS
 import sys
 input = sys.stdin.readline
+n,m,v = map(int, input().split())
+board = [[0]*(n+1) for i in range(n+1)]
 
-def dfs(graph, v, visited):
-    visited[v] = True
+for i in range(m):
+    a,b = map(int, input().split())
+    board[a][b] = board[b][a] = 1
+visited = [0] * (n+1)
+
+def dfs(v):
+    visited[v] = 1
     print(v, end=' ')
     for i in range(1,n+1):
-        if not visited[i] == False and graph[v][i] == 1:
-            dfs(graph, i, visited)
+        if visited[i] == 0 and board[v][i] == 1:
+            dfs(i)
 
-n,m,v = map(int,input().split())
-graph = [[]]
-for _ in range(m):
-    graph.append(list(map(int,input().split())))
-visited = [False] * (m+1)
 
-dfs(graph, v, visited)
+def bfs(v):
+    queue=[v]
+    visited[v] = 0
+    while queue:
+        v = queue.pop(0)
+        print(v, end=' ')
+        for i in range(1,n+1):
+            if visited[i] == 1 and board[v][i] == 1:
+                queue.append(i)
+                visited[i] = 0
+
+dfs(v)
+print()
+bfs(v)
