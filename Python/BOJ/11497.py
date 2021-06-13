@@ -11,6 +11,6 @@ for _ in range(t):
     max_level = 0
     for i in range(2,n):
         max_level = max(max_level, abs(board[i] - board[i-2]))
-        print(max_level)
+        
 
-    #print(max_level)
+    print(max_level)
