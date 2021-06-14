@@ -1,16 +1,29 @@
 # 통나무 건너뛰기
 import sys
+from collections import deque
 input = sys.stdin.readline
+
 t = int(input())
 
-for _ in range(t):
+while t != 0:
+    left = deque()
+    right = deque()
+    plus = deque()
+    result = []
     n = int(input())
-    board = [int(x) for x in input().split()]
-    board.sort()
+    board = list(map(int, input().split()))
+    board.sort(reverse=True)
 
-    max_level = 0
-    for i in range(2,n):
-        max_level = max(max_level, abs(board[i] - board[i-2]))
-        
+    while len(board) > 1:
+        left.append(board.pop())
+        right.appendleft(board.pop())
+    
+    if len(board) == 1:
+        left.append(board.pop())
 
-    print(max_level)
+    plus = left + right
+    for i in range(len(plus)-1):
+        result.append(abs(plus[i] - plus[i+1]))
+    
+    print(max(result))
+    t -= 1
