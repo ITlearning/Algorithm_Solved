@@ -10,6 +10,7 @@ def dfs(begin, target,words, visited):
             return answer
         
         for i in range(0,len(words)):
+            # 이게 핵심인데 이해가 안간다..
             if len([k for k in range(0,len(words[i])) if words[i][k] != stack[k]]) == 1:
                 if visited[i] != 0:
                     continue
