@@ -41,6 +41,7 @@ def select_wall(start, count):
         for i in range(start, N*M): # 브루트-포스로 벽 선택
             r = i // M # M으로 나눈 몫은 행
             c = i % M # M으로 나눈 나머지는 열
+            # 위 두개가 핵심
             if graph_copy[r][c] == 0: # 해당구역이 0인 경우에
                 graph_copy[r][c] = 1 # 벽으로 선택
                 select_wall(i, count+1) # 다음 벽 선택
@@ -48,3 +49,5 @@ def select_wall(start, count):
 
 select_wall(0,0)
 print(safe_region)
+
+# https://deep-learning-study.tistory.com/619
