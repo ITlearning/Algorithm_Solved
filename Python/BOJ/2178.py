@@ -25,9 +25,6 @@ def dfs(x,y):
             dist[nx][ny] = dist[x][y] + 1
             q.append((nx,ny))
  
-
-
-
 dfs(0,0)
 
 print(dist[N-1][M-1])
