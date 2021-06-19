@@ -15,6 +15,7 @@ def check(i):
         # 이후에 쓰이지 않는거면 그냥 빼버리기
         if p not in board[i:]:
             return p
+        # 여기가 이해가 안간다고..왜 그러는거냐고..
         if idx < board[i:].index(p):
             target = p
             idx = board[i:].index(p)
