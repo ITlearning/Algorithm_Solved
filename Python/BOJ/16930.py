@@ -19,7 +19,6 @@ dist[x1-1][y1-1] = 0
 
 while q:
     x,y= q.popleft()
-    
     for i in range(4):
         nx = x + dx[i]
         ny = y + dy[i]
@@ -36,3 +35,4 @@ if dist[x2-1][y2-1] == float('inf'):
     print(-1)
 else:
     print(dist[x2-1][y2-1])
+            
