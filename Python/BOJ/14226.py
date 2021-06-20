@@ -25,3 +25,6 @@ for i in range(n+1):
         if answer == -1 or answer > dist[n][i]:
             answer = dist[n][i]
 print(answer)
+
+
+# https://velog.io/@aonee/%EB%B0%B1%EC%A4%80-boj-14226-%EC%9D%B4%EB%AA%A8%ED%8B%B0%EC%BD%98-%ED%8C%8C%EC%9D%B4%EC%8D%AC
