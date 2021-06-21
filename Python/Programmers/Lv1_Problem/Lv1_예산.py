@@ -1,5 +1,4 @@
 def solution(d, budget):
-    answer = 0
     d.sort()
     money = 0
     cnt = 0
