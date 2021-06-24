@@ -17,7 +17,7 @@ if t == True:
     print(-1)
 '''
 answer = []
-arr = [3,3,2,4,4,2,5,2,5,5]
+arr = [3,2,2,3,3,1,4,4]
 tmp = []
 for i in arr:
     if i not in tmp:
