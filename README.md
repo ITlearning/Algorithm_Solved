@@ -1,5 +1,10 @@
 # Algorithm_Solved
 
+
+[![Solved.ac
+프로필](http://mazassumnida.wtf/api/v2/generate_badge?boj=yo7504)](https://solved.ac/yo7504)
+
+
 #### 알고리즘 문제 커밋
 
 문제 풀이를 여기에서!
