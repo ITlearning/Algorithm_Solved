@@ -15,13 +15,11 @@ else:
     while start <= end:
         mid = (start+end) // 2
         result = 0
-        print(mid)
         for i in board:
             if i > mid:
                 result += mid
             else:
                 result += i
-        print("result :",result)
         if result <= topic:
             answer = mid
             start = mid + 1
