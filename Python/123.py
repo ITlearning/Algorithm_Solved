@@ -1,29 +1,40 @@
-from collections import deque
+# 유기농 배추
 import sys
+from collections import deque
+input = sys.stdin.readline
+dx = [-1,0,1,0]
+dy = [0,-1,0,1]
+t = int(input())
+answer = []
+while t != 0:
 
-def bfs(node):
-    q = deque()
-    q.append(node)
-    check[node] = 1
-    while q:
-        node = q.popleft()
-        for n in graph[node]:
-            if check[n] == 0:
-                check[n] = 1
-                q.append(n)
+    m,n,k = map(int,input().split())
 
-N, M = map(int, sys.stdin.readline().split())
-graph = [[] for _ in range(N+1)]
-for _ in range(M):
-    u, v = map(int, sys.stdin.readline().split())
-    graph[v].append(u)
-res = []
-for i in range(1, N+1):
-    check = [0]*(N+1)
-    bfs(i)
-    res.append(check.count(1))
-m = max(res)
-for i in range(N):
-    if res[i] == m:
-        print(i+1, end=' ')
-print()
+    board = [[0 for i in range(m)] for j in range(n)]
+    dist = [[False for i in range(m)] for j in range(n)]
+    for _ in range(k):
+        a,b = map(int,input().split())
+        board[b][a] = 1
+    cnt = 0
+    for a in range(n):
+        for b in range(m):
+            if board[a][b] == 0: continue
+            if dist[a][b] == True: continue
+            cnt += 1
+            q = deque()
+            q.append((a,b))
+            dist[a][b] = True
+            while q:
+                x,y = q.popleft()
+                for i in range(4) :
+                    nx = x + dx[i]
+                    ny = y + dy[i]
+                    if nx < 0 or nx >= n or ny < 0 or ny >= m : continue
+                    if board[nx][ny] == 0 or dist[nx][ny] == True: continue
+                    dist[nx][ny] = True
+                    q.append((nx,ny))
+
+    answer.append(cnt)
+    t -= 1
+
+print(answer)
