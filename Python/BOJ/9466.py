@@ -2,7 +2,7 @@
 import sys
 sys.setrecursionlimit(10**6)
 input = sys.stdin.readline
-
+ans = []
 def dfs(n):
     global ans
     dist[n] = True
@@ -18,7 +18,6 @@ def dfs(n):
 for _ in range(int(input())):
     n = int(input())
     board = [0] + list(map(int,input().split()))
-    print(board)
     dist = [True] + [False] * (n)
     ans = list()
 
