@@ -38,7 +38,6 @@ for i in board:
     for j in i:
         if j == 0:
             t = True
-        
         answer = max(answer,j)
 
 if t:
