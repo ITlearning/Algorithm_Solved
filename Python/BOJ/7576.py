@@ -38,11 +38,10 @@ for i in board:
     for j in i:
         if j == 0:
             t = True
+        
         answer = max(answer,j)
 
 if t:
     print(-1)
-elif answer == -1:
-    print(0)
 else:
     print(answer-1)
