@@ -36,6 +36,7 @@ while T != 0:
                 fdist[nx][ny] = fdist[x][y] + 1
                 Q1.append((nx,ny))
 
+    # 사람 DFS
     result = 0
     def dfs():
         while Q2:
