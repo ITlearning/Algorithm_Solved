@@ -29,4 +29,3 @@ for k in range(max(map(max, board))):
                 dfs(i,j,k)
     ans = max(ans,cnt)
 print(ans)
-                
