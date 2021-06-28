@@ -1,29 +1,29 @@
 # 숨바꼭질 4
-from collections import deque
 import sys
-input = sys.stdin.readline
+from collections import deque
 sys.setrecursionlimit(10**6)
+input = sys.stdin.readline
 n,k = map(int,input().split())
 MAX_INDEX = 100000
-board = [MAX_INDEX] * (MAX_INDEX+1)
-move_to = [0] * (MAX_INDEX + 1)
+dist = [MAX_INDEX] * (MAX_INDEX+1)
+board = [0] * (MAX_INDEX+1)
 q = deque()
 q.append(n)
-board[n] = 0
+dist[n] = 0
 while q:
     x = q.popleft()
     if x == k:
         break
     for nx in (x-1, x+1, x*2):
-        if 0 <= nx <= MAX_INDEX and board[nx] == MAX_INDEX:
+        if 0 <= nx <= MAX_INDEX and dist[nx] == MAX_INDEX:
+            dist[nx] = dist[x] + 1
+            board[nx] = x
             q.append(nx)
-            board[nx] = board[x] + 1
-            move_to[nx] = x
 
 def move(n,m):
     if n != m:
-        move(n,move_to[m])
-    print(m, end=' ')
+        move(n,board[m])
+    print(m,end=' ')
 
 print(board[k])
 move(n,k)
