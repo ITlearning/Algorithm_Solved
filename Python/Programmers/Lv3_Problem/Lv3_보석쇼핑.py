@@ -4,7 +4,6 @@ def solution(gems):
     overlap = len(set(gems))
     start = 0
     end = 0
-    t = 0
     dic = {}
     
     while end < len(gems):
