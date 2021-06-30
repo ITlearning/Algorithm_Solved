@@ -12,7 +12,6 @@ def match(per, banned_id):
     return True
 
 def solution(user_id, banned_id):
-    answer = 0
     ans = []
     for i in permutations(user_id, len(banned_id)):
         if match(i, banned_id):
