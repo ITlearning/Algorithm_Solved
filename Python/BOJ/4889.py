@@ -8,7 +8,8 @@ while True:
     s = [] # 스택역할 리스트
     text = input().rstrip()
     change = 0 # 바꾼 수
-
+    
+    # 일단 먼저 불안정한 것만 뽑아서 저장한다
     for i in text:       # 입력받은 괄호 하나씩 돌면서
         if i == "{":     # 만일 괄호가 { 일 경우
             s.append(i)  # 일단 스택에 추가
@@ -20,6 +21,7 @@ while True:
         else: # 괄호 이외의 것이 들어오면 프로그램 종료
             exit(0)
 
+    #불안정한 것들만 처리
     while s:        # 안정적이지 않은 괄호들의 스택
         tmp = s[-1] # 제일 마지막에 넣은 것
         s.pop()     # 하나 빼주고

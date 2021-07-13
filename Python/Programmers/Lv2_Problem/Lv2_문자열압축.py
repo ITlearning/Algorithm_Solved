@@ -15,7 +15,7 @@ def solution(s):
             else:                        # 그게 아니면
                 if cnt > 1:              # 만약 카운트가 1 이상 이라면(연속된 글자가 하나 이상)
                     total += str(cnt) + s[start:cur] # 카운트와 같이 연속된 문자열 추가
-                else:                    # 그게 아니면
+                else:                     # 그게 아니면
                     total += s[start:cur] # 그냥 문자열만 추가
                 cnt = 1 # 카운트 초기화
             start = cur # 현재 문자열 확인 끝났으니까 다음 문자열 확인하기 위해서 슬라이싱 시작점 업데이트
