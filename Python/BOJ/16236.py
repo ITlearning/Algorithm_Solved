@@ -66,7 +66,7 @@ while True:
         x,y, m = an[0][0], an[0][1], an[0][2]
         move += m
         eat += 1
-        # 먹은거 0으로 변경해준다.
+        # 먹은것은 0으로 변경해준다.
         board[x][y] = 0
         # 하나하나 먹는데, 먹은 횟수가 크기와 같아졌을 경우
         if eat == shark_size:
@@ -78,4 +78,6 @@ while True:
     else:
         # 만약 더이상 먹을게 없으면 break
         break
+
+
 print(move)

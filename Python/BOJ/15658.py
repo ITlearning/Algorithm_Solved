@@ -10,7 +10,7 @@ n = int(input())
 num = list(map(int,input().split()))
 plus, minus, mul, div = map(int,input().split())
 
-# dfs를 돌리면서 입력받은 4칙연산의 개수대로 재귀를 돌림
+# 함수를 돌리면서 입력받은 4칙연산의 개수대로 재귀를 돌림
 def dfs(index, result, plus, minus, mul, div):
     global maxi, mini
     # 입력받았던 모든 수를 지났을 경우
