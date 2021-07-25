@@ -1,4 +1,5 @@
 # 치킨 배달
+from itertools import permutations
 N,M = map(int,input().split())
 
 board = []
@@ -12,47 +13,33 @@ for i in range(N):
         if board[i][j] == 1:
             people.append([i+1,j+1])
         elif board[i][j] == 2:
-            shop.append([i+1,j+1, 0])
-total = []
+            shop.append([i+1,j+1])
 
-for p in range(len(people)):
-    tmp = 1e9
-    big_index = 0
-    for s in range(len(shop)):
-        big = abs(people[p][0] - shop[s][0]) + abs(people[p][1] - shop[s][1])
-        if tmp >= big:
-            tmp = big
-            big_index = s
-    shop[big_index][2] += 1
+brute = []
+for b in range(len(shop)):
+    if b < M:
+        brute.append(0)
+    else:
+        brute.append(1)
 
+print(brute)
 
-# 정렬에서 계속 문제 생긴다. 이거 어떻게 고칠까 고민좀 해야겠는걸?
+k = 0
+small = 1e9
 
-shop.sort(reverse=True,key=lambda x:(x[2],-x[1],x[1]))
-print(shop)
-t = True
-for i in range(1,len(shop)):
-    if shop[i][2] != shop[i-1][2]:
-        t = False
+n = list(permutations(brute))
 
-if t:
-    mid = N//2
-    for i in range(len(people)):
+for permution in n:
+    total = 0
+    for p in people:
         tmp = 1e9
-        chicken = abs(people[i][0] - shop[mid][0]) + abs(people[i][1] - shop[mid][1])
-        tmp = min(tmp,chicken)
-        total.append(tmp)
-    print(sum(total))
-else:
-    for i in range(len(people)):
-        tmp = 1e9
-        chicken = 0
-        for j in range(M):
-            chicken = abs(people[i][0] - shop[j][0]) + abs(people[i][1] - shop[j][1])
-            tmp = min(tmp,chicken)
-            print(tmp,end=" ")
-        total.append(tmp)
-    print()
-    print(total)
-    print(sum(total))
+        for i in range(len(shop)):
+            if permution[i] == 0:
+                continue
+            chicken = abs(shop[i][0] - p[0]) + abs(shop[i][1] - p[1])
+            tmp = min(tmp, chicken)
+            total += tmp
+        small = min(small,total)
+
+print(small)
 
