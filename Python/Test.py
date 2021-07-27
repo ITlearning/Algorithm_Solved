@@ -1,44 +1,44 @@
-from sys import stdin
-from heapq import heappush, heappop
-input = stdin.readline
+# 톱니바퀴
+from collections import deque
 
-n = int(input())
-a = [list(map(int, input().split())) for _ in range(n)]
-q = []
+gear = []
+for _ in range(4):
+    tmp = map(int,input())
+    gear.append(list(tmp))
+k = int(input())
 
-def init():
-    for i in range(n):
-        for j in range(n):
-            if a[i][j] == 9:
-                heappush(q, (0, i, j))
-                a[i][j] = 0
-                return
 
-def bfs():
-    body, eat, ans = 2, 0, 0
-    check = [[False]*n for _ in range(n)]
-    while q:
-        d, x, y = heappop(q)
-        if 0 < a[x][y] < body:
-            eat += 1
-            a[x][y] = 0
-            if eat == body:
-                body += 1
-                eat = 0
-            ans += d
-            d = 0
-            while q:
-                q.pop()
-            check = [[False]*n for _ in range(n)]
-        for dx, dy in (-1, 0), (0, -1), (1, 0), (0, 1):
-            nd, nx, ny = d+1, x+dx, y+dy
-            if nx < 0 or nx >= n or ny < 0 or ny >= n:
-                continue
-            if 0 < a[nx][ny] > body or check[nx][ny]:
-                continue
-            check[nx][ny] = True
-            heappush(q, (nd, nx, ny))
-    print(ans)
+def rotate(x, dir):
+    if dir == 1:
+        gear[x].insert(0, gear[x].pop())
+    elif dir == -1:
+        gear[x].append(gear[x].pop(0))
 
-init()
-bfs()
+for i in range(k):
+    number, direction = map(int,input().split())
+    dist = [[number-1, direction]]
+    z = direction
+    x = number -1
+    while x+1 <= 3:
+        if gear[x][2] != gear[x+1][6]:
+            z = -z
+            dist.append([x+1, z])
+        else:
+            break
+        x += 1
+    
+    x = number-1
+    z = direction
+    while x -1 >= 0:
+        if gear[x][6] != gear[x-1][2]:
+            z = -z
+            dist.append([x-1, z])
+        else:
+            break
+        x -= 1
+    
+    for x, dir in dist:
+        rotate(x,dir)
+
+result = (gear[0][0] * 1) + (gear[1][0] * 2) + (gear[2][0] * 4) + (gear[3][0] * 8)
+print(result)
