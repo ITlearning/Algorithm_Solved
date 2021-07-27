@@ -1,5 +1,7 @@
 # 톱니바퀴
 '''
+# 모든 경우를 다 for 문 안에서 처리하려 했었다.
+# 그러나, 이미 돌린 것을 또 돌리는 참사가 나게 되었다.
 gear = []
 for _ in range(4):
     tmp = map(int,input())
@@ -21,9 +23,10 @@ for i in range(k):
 
         if gear[number][2] != gear[right][6]:
             if direction == 1:
+                # 이 코드다.
                 tmp = board[number].pop()
                 board[number].insert(0,tmp)
-
+                # 반대 코드
                 tmp = board[right].pop(0)
                 board[right].append(tmp)
                 direction = -direction
@@ -86,8 +89,6 @@ print(result)
 '''
 
 # 톱니바퀴
-from collections import deque
-
 gear = []
 for _ in range(4):
     tmp = map(int,input())
@@ -138,4 +139,4 @@ result = (gear[0][0] * 1) + (gear[1][0] * 2) + (gear[2][0] * 4) + (gear[3][0] * 
 # 답 도출
 print(result)
 
-# 소요시간 : 최소 3~4 시간. (몇일 지나긴 했음. . . )
+# 소요시간 : 최소 3~4 시간. (며칠 지나긴 했음. . . )
