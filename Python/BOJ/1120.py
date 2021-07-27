@@ -1,13 +1,4 @@
 # 문자열
-
-# 계속 틀린거
-"""
-import sys
-input = sys.stdin.readline
-# sys 를 사용하면 뒤에 \n 이 들어가서 아마도 문제가 되는듯 하다.
-"""
-
-# 정답
 a,b = input().split()
 
 total = 1e9
