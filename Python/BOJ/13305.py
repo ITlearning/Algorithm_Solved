@@ -9,9 +9,8 @@ location = list(map(int,input().split()))
 
 # 제일 왼쪽 도시에서 그 다음 도시로 이동하려면 처음에는 처음도시 기름값으로 도로길이만큼 넣어야 한다.
 total = road[0]*location[0]
-# 그리고 일단 기름값이 제일 싼건 0번쨰 인덱스일테다. (아직 0번째니까)
+# 그리고 일단 기름값이 제일 싼건 0번째 인덱스일테다. (아직 0번째니까)
 small = location[0]
-# 
 tmp = 0
 
 for i in range(1,N-1):

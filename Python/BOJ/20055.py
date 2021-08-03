@@ -1,4 +1,6 @@
 # 컨베이어 벨트 위의 로봇
+# 종료되었을 때 몇 번째 단계가 진행 중이었는지 구해보자. 가장 처음 수행되는 단계는 1번째 단계이다.
+
 from collections import deque
 N,K = map(int,input().split())
 N = N*2 # N 값 2배
@@ -10,7 +12,7 @@ robot = deque([0]*(N)) # 로봇 덱
 while True:
     # 1. 벨트가 각 칸 위에 있는 로봇과 함께 한 칸 회전한다.
     total += 1
-    board.rotate(1) # deque에 rotate() 함수를 사용했다. 매개변수가 1일경우 시계방향 회전, 0일경우 반시계 방향
+    board.rotate(1) # deque에 rotate() 함수를 사용했다. 매개변수가 1일경우 시계방향 회전, -1일경우 반시계 방향
     robot.rotate(1) # 두개 다 한 칸 회전
 
     robot[(N//2)-1] = 0 # 내리는 위치의 로봇 내려주기 (문제에서 내리는 위치의 로봇은 내려주라고 하니)

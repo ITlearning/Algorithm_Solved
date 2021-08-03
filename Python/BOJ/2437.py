@@ -10,12 +10,9 @@ total = 1 # 최솟값을 입력받을 변수
 
 # 추를 돌면서 최솟값보다 큰 추를 만나면 for 문 중지
 for i in board:
-    print("board:", i)
-    print("total:",total)
     if total < i:
         break
     total += i
-    print()
 
 print(total)
 
