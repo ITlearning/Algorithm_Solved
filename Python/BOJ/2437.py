@@ -5,14 +5,21 @@ input = sys.stdin.readline
 N = int(input())
 
 board = list(map(int,input().split()))
-board.sort()
-total = 1
+board.sort() # 입력받은 추 오름차순 정렬
+total = 1 # 최솟값을 입력받을 변수
+
+# 추를 돌면서 최솟값보다 큰 추를 만나면 for 문 중지
 for i in board:
+    print("board:", i)
+    print("total:",total)
     if total < i:
         break
     total += i
+    print()
 
 print(total)
+
+
 '''
 for i in range(0,N): # index
     for cur in range(1,N): #cursor
