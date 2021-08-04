@@ -11,15 +11,20 @@ while T > 0:
     text = input().rstrip()
     match = list(text)
     cnt = 0
-    tri = True
-    # 1. 배치된 말 중 임의의 2개의 말을 골라 서로의 위치를 바꾼다.
-    t = False
-    for i in range(len(board)-1):
-        if board[i] != board[i+1]:
-            if board[i] != match[i]:
-                board[i], board[i+1] = board[i+1], board[i]
-            else:
-                
-    print(cnt)
+    check_board = []
+    check_match = []
+    for i in range(len(board)):
+        if board[i] != match[i]:
+            check_board.append(board[i])
+            check_match.append(match[i])
+    check_match.sort()
+    check_board.sort()
+
+    for i in range(len(check_board)):
+        if check_board[i] == check_match[i]:
+            cnt += 0.5
+        else:
+            cnt += 1
+    print(int(cnt))
     T -= 1
 
