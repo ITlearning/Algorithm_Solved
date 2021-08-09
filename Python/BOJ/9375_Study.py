@@ -1,19 +1,17 @@
 # 패션왕 신혜빈
+from collections import Counter
 T = int(input())
 while T > 0:
-    board = {}
+    board = []
     N = int(input())
     total = N
     for i in range(N):
-        stuff, category = input().split()
-        if category not in board:
-            board[category] = 0
-        board[category] += 1
-    if len(board) > 1:
-        tmp = 1
-        for i in board.values():
-            tmp *= i
-        total += tmp
-    print(board)
-    print(total)
+        stuff, category = map(str,input().split())
+        board.append(category)
+
+    result = Counter(board)
+    total = 1
+    for i in result.values():
+        total *= i+1
+    print(total - 1)
     T -= 1
