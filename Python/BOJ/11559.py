@@ -1,6 +1,5 @@
 # Puyo Puyo
 from collections import deque
-import sys
 board = []
 dx = [0, 1, 0, -1]
 dy = [1, 0, -1, 0]
@@ -48,7 +47,7 @@ def move():
                     board[k][i] = board[j][i]
                     board[j][i] = "."
 
-
+# 여기서 while문 시작
 while True:
     alphabet = []
     t = False
