@@ -1,38 +1,58 @@
-# 달리기
-import sys
+# Puyo Puyo
 from collections import deque
+import sys
 input = sys.stdin.readline
-N,M,K = map(int,input().split())
-
-dist = [[float('inf')]* (M) for _ in range(N)]
-dx = [-1,0,1,0]
-dy = [0,-1,0,1]
 board = []
-for i in range(N):
-    text = list(input().rstrip())
-    board.append(list(text))
-x1,y1,x2,y2 = map(int,input().split())
-q = deque()
-c = 1
-q.append((x1-1,y1-1))
-dist[x1-1][y1-1] = 0
+dx = [0,1,0,-1]
+dy = [1,0,-1,0]
+for i in range(12):
+    tmp = input().rstrip()
+    board.append(list(tmp))
+total = 0
 
-while q:
-    x,y= q.popleft()
-    
-    for i in range(4):
-        nx = x + dx[i]
-        ny = y + dy[i]
-        cnt = 1
-        while cnt <= K and 0 <= nx < N and 0 <= ny < M and board[nx][ny] != '#' and dist[nx][ny] > dist[x][y]:
-            if dist[nx][ny] == float('inf'):
-                q.append((nx,ny))
-                dist[nx][ny] = dist[x][y] + 1
-            nx += dx[i]
-            ny += dy[i]
-            cnt += 1
+def bfs(i,j):
+    global change_box
+    q = deque()
+    q.append([i,j])
+    change_box.append([i,j])
+    while q:
+        x,y = q.popleft()
+        for dir in range(4):
+            nx = x + dx[dir]
+            ny = y + dy[dir]
+            if nx < 0 or nx >= 12 or ny < 0 or ny >= 6:
+                continue
+            if dist[nx][ny] == True or board[nx][ny] != board[x][y]:
+                continue
+            dist[nx][ny] = True
+            q.append([nx,ny])
+            change_box.append([nx,ny])
 
-if dist[x2-1][y2-1] == float('inf'):
-    print(-1)
-else:
-    print(dist[x2-1][y2-1])
+def down():
+    for i in range(6):
+        for j in range(10,-1,-1):
+            for k in range(11,j,-1):
+                if board[j][i] != "." and board[k][i] == ".":
+                    board[k][i] = board[j][i]
+                    board[j][i] = "."
+
+
+while True:
+    isTrue = False
+    dist = [[False for _ in range(6)] for i in range(12)]
+    for i in range(12):
+        for j in range(6):
+            if board[i][j] == "." or dist[i][j]:
+                continue
+            dist[i][j] = True
+            change_box = []
+            bfs(i,j)
+            if len(change_box) >= 4:
+                isTrue = True
+                for x,y in change_box:
+                    board[x][y] = "."
+    if isTrue == False:
+        break
+    down()
+    total += 1
+print(total)
