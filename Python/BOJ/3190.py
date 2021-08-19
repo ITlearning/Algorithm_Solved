@@ -9,6 +9,7 @@ dy = [1,0,-1,0]
 # 보드의 크기
 n = int(input())
 board = [[0 for _ in range(n)]for _ in range(n)]
+
 # 사과의 개수
 k = int(input())
 for i in range(k):
@@ -21,6 +22,7 @@ route = deque()
 for i in range(l):
     index, turn = input().split()
     route.append([int(index), turn])
+
 # 움직이는 인덱스
 x = 0
 y = 0
