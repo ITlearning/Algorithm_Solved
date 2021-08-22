@@ -14,3 +14,5 @@ for i in range(n):
     heapq.heappush(total, [tmp,board[i]])
 
 print(total[0][1])
+
+# PyPy 통과
