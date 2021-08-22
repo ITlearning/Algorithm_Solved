@@ -6,7 +6,7 @@ que = []
 
 # 일단 이렇게 해서 초기 최대 개수를 정해준다.
 # 그리고 첫 줄에 수를 모두 다 넣어준다.
-for i in map(int,input().split()):
+for i in map(int,input().split()):  
     heapq.heappush(que, i)
 
 for _ in range(1,n):
