@@ -7,7 +7,7 @@ n,k = map(int,input().split())
 answer = []
 board = list(map(int,input().split()))
 
-
+# 최소힙으로 입력 받은 수 정리
 for i in board:
     heapq.heappush(answer, i)
 
