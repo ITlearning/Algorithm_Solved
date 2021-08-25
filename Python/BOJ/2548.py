@@ -8,6 +8,7 @@ n = int(input())
 board = list(map(int,input().split()))
 
 total = [] # 선택된 숫자의 차이 합을 넣어놓을 리스트
+
 for i in range(n):
     tmp = 0
     for j in board: # 각 숫자를 돌면서 차이를 tmp에 저장
