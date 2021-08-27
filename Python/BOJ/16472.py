@@ -1,21 +1,35 @@
 # 고냥이
-from collections import Counter
-from collections import deque
 n = int(input())
 
 text = input()
-answer = deque()
+answer = {}
 start = 0
-end = n
-for i in text[start:end-1]:
-    answer.append(i)
-print(answer)
+end = 0
+#print(answer)
+total = 0
 while start <= end:
-    answer.append(text[end])
-    tmp = Counter(answer)
-    if len(tmp) < n:
-        end += 1
-    else:
-        start += 1
+    if end >= len(text):
+        break
 
-# 모르겠다..
+    if text[end] in answer:
+        answer[text[end]] += 1
+    else:
+        answer[text[end]] = 1
+    #print(answer)
+    while len(answer) > n:
+        #print("와일문")
+        answer[text[start]] -= 1
+        
+        if answer[text[start]] == 0:
+            del answer[text[start]]
+        print(answer)
+        start += 1
+    #print("턴 종료")
+    end += 1
+    total = max(total, end - start )
+    
+    #print(total)
+    
+
+    
+print(total)
