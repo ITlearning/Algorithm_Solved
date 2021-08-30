@@ -23,3 +23,4 @@ def solution(orders, course):
     return total
 
 # 40분 소요
+
