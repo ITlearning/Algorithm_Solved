@@ -8,8 +8,6 @@ def binary_search(point, item):
     answer = 0
     while start <= end:
         mid = (start + end) // 2
-        # if mid > end:
-        #     return answer
         if item[mid-1] >= point:
             answer = mid
             start = mid + 1
@@ -29,6 +27,7 @@ def solution(infos, query):
         score = int(tmp[-1])    # 분리한 문자열 중 score만 추출
         for i in range(5):      # 5까지 돌면서
             for c in combinations(key, i):   # 총 16가지의 상황의 key 발급 후 적용
+                print(c)
                 tmp = "".join(c)             # 문자열로 바꿈
                 if tmp in items:            # 딕셔너리에 해당 key값이 존재한다면
                     items[tmp].append(score) # 해당 딕셔너리 리스트에 점수 추가
@@ -69,4 +68,4 @@ query = ["java and backend and junior and pizza 100", "python and frontend and s
 print(solution(infos,query))
 
 
-# 시간 셀 수 없음.
+# 시간..점심부터 저녁까지.. ㅠ
