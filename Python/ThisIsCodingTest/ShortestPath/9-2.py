@@ -13,7 +13,7 @@ distance = [INF] * (n + 1)
 for _ in range(m):
     a,b,c = map(int, input().split())
     graph[a].append((b,c))
-
+ 
 def dijkstra(start):
     q = []
     # 시작 노드로 가기 위한 최단 경로는 0으로 설정하여, 큐에 삽입
