@@ -42,6 +42,7 @@ def solution(s):
     answer.sort(key=len)
     return len(answer[0])
 
+# 38분 22초
 
 print(solution("aabbaccc"))
 print(solution("ababcdcdababcdcd"))
