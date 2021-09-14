@@ -19,7 +19,7 @@ def solution(n, k):
     tmp = change(n,k)
 
     tt = tmp.split('0')
-    #print(tt)
+
     if '1' in tt:
         while '1' in tt:
             tt.remove('1')

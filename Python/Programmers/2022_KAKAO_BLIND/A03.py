@@ -5,6 +5,8 @@ def solution(fees, records):
     total = {}
     stack = []
     an = {}
+
+
     defaultTime = fees[0]
     defaultPay = fees[1]
     defaultMin = fees[2]
@@ -19,31 +21,30 @@ def solution(fees, records):
         else:
             total[tmp[1]].append([tmp[0], tmp[2]])
     
-    #print(an)
+
     for value, name in zip(total.values(), total.keys()):
         for i in value:
-            #print(i)
+
             if i[1] == 'IN':
                 stack.append([i[0], name])  
             elif i[1] == 'OUT':
                 if len(stack) != 0:
                     inTime = stack.pop()
-                    #print(inTime)
                     inDate = datetime.strptime(inTime[0], '%H:%M')
                     outDate = datetime.strptime(i[0], '%H:%M')
                     inAndOut = outDate - inDate
+
                     if an[name] + inAndOut.seconds//60 > defaultTime:
                         an[name] += inAndOut.seconds//60
                     else:
                         an[name] += inAndOut.seconds//60
     
     for i in stack:
-        #print(i)
-        dayHour = datetime.strptime("23:59", '%H:%M')
 
+        dayHour = datetime.strptime("23:59", '%H:%M')
         inDate = datetime.strptime(i[0], '%H:%M')
         inAndOut = dayHour - inDate
-        #print(inAndOut.seconds // 60)
+
         if an[i[1]] + inAndOut.seconds // 60 > defaultTime:
             an[i[1]] += inAndOut.seconds // 60
 
@@ -54,9 +55,12 @@ def solution(fees, records):
             answer[name] += ceil((time - defaultTime) / defaultMin) * defaultWon
     
     answer = sorted(answer.items())
+    
     real_answer = []
     for i in answer:
         real_answer.append(i[1])
+    
+
     return real_answer
 
 print(solution([120, 0, 60, 591], ["16:00 3961 IN", "16:00 0202 IN", "18:00 3961 OUT", "18:00 0202 OUT", "23:58 3961 IN"]))

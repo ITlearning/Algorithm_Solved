@@ -5,6 +5,7 @@ def reload(num,b,sx,sy,ex,ey, point):
         for i in range(sx, ex+1):
             for j in range(sy,ey+1):
                 b[i][j] -= point
+                
     # 아군 힐러 시 값 더하기
     elif num == 2:
         for i in range(sx, ex+1):

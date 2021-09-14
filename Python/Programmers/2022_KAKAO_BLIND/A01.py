@@ -20,11 +20,8 @@ def solution(id_list, report, k):
         for j in i:
             if cnt[j] >= k:
                 t += 1
-        #print(t)
+
         answer.append(t)
-
-    #print(total)
-
 
     return answer
 

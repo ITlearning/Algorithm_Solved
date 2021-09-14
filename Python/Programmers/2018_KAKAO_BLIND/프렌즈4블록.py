@@ -4,8 +4,10 @@ def solution(m, n, board):
     answer = 0
     set_check = set()
     board = list(map(list, board)) # 입력받은 board 문자열 리스트로 나누기
-
+    
+    
     # 2X2 체크 함수
+
     def check(board):
         for i in range(m-1):
             for j in range(n-1):
@@ -59,3 +61,4 @@ def solution(m, n, board):
 print(solution(4,5,["CCBDE", "AAADE", "AAABF", "CCBBF"]))
 print(solution(6,6,["TTTANT", "RRFACC", "RRRFCC", "TRRRAA", "TTMMMF", "TMMTTJ"]))
 
+# 43 분 06초
