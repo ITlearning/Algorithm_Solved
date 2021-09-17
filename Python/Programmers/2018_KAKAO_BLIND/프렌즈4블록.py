@@ -21,7 +21,7 @@ def solution(m, n, board):
     # 배열 내려주기
     def update(board):
         # 덱을 이용
-        q = deque()
+        q = deque() 
         for i in range(len(board[0])):
             for j in range(len(board)-1,-1,-1):
                 # 각 열을 세로로 돌면서 0이 나왔을경우에는 덱에 추가해주고
