@@ -6,7 +6,7 @@ def solution(cacheSize, cities):
     # 만일 사이즈가 0일 경우
     if cacheSize < 1:
         # 모든게 다 캐시 미스이니 길이에 * 5 해준다.
-        answer = len(cities) * 5
+        answer = len(cities) * 5   
     
     # 0 이상일 경우
     else:
