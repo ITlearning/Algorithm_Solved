@@ -13,8 +13,8 @@ def solution(cacheSize, cities):
         for city in cities:
             
             # Miss
-            data = str(city).lower()
-            # 데이터가 기존에 존재하지 않으면
+            data = str(city).lower()    
+            # 데이터가 기존에 존재하지 않으면 
             if data not in cache:
                 answer += 5
                 # 캐시 사이즈보다 캐시가 적을 경우엔 추가해주고
