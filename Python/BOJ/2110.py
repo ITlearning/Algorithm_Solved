@@ -5,8 +5,6 @@ input = sys.stdin.readline
 
 n,c = map(int,input().split())
 
-print(n,c)
-
 board = []
 
 for _ in range(n):
