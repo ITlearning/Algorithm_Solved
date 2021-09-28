@@ -15,7 +15,6 @@ board.sort()
 
 # 이분탐색 돌며
 def binary_search(start,end):
-
     while start <= end:
         mid = (start + end) // 2
         select = board[0] # 제일 작은 좌표
