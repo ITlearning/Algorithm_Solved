@@ -15,6 +15,7 @@ board.sort()
 
 # 이분탐색 돌며
 def binary_search(start,end):
+    global answer
     while start <= end:
         mid = (start + end) // 2
         select = board[0] # 제일 작은 좌표
@@ -30,7 +31,6 @@ def binary_search(start,end):
         # 입력받은 공유기 개수보다 많거나 같을 경우
         if count >= c:
             # 답 도출
-            global answer
             answer = mid
             start = mid + 1
         else: # 아닐경우
@@ -39,8 +39,8 @@ def binary_search(start,end):
 
 
 answer = 0
-start = 1
-end = board[-1] - board[0]
+start = 1                  # 1로 세팅
+end = board[-1] - board[0] # 좌표가 제일 큰것과 작은거 빼줌
 binary_search(start,end)
 
 print(answer)

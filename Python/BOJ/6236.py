@@ -1,10 +1,10 @@
 # 용돈 관리
-
 n,m = map(int,input().split())
 board = []
 answer = 0
 
 def binary_search(start,end):
+    # 값 수정 시 글로벌을 사용해야 한다.
     global answer
     while start <= end:
         mid = (start+end) // 2
