@@ -45,6 +45,7 @@ for i in range(max_index+1):
 # 오른쪽 부분은 반대 인덱스부터 돌아감
 right_max = -1  # 오른쪽 부분에서 가장 큰 수
 right_total = 0 # 오른쪽 부분을 합한 수
+
 for j in range(end_index, max_index, -1):
     # 가장 크다고 기록했던 기둥보다 더 큰 기둥일 경우
     if right_max < board[j]:
