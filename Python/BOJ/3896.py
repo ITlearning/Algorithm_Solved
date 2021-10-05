@@ -18,6 +18,7 @@ prime = [i for i in range(2,n+1) if prime_bool[i] == False]
 # 테스트 케이스
 t = int(input())
 
+# 이분탐색
 def binary_search(key):
     start = 2
     end = len(prime) - 1
@@ -30,6 +31,8 @@ def binary_search(key):
     
     return start
 
+# 입력 받으면서 소수 아니면 0, 맞으면 이분탐색 돌려서
+# 입력받은 수보다 큰 바로 다음 소수 인덱스 찾아서 답 도출
 for _ in range(t):
     key = int(input())
     if not prime_bool[key]:

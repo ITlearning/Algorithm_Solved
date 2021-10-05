@@ -7,7 +7,7 @@ board = []
 for i in range(n):
     board.append(list(map(int,input().split())))
 
-print(board)
+#print(board)
 
 for i in range(1,n+1):
     for j in range(1,m+1):
