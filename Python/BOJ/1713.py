@@ -6,28 +6,22 @@ from collections import deque
 n = int(input())
 m = int(input())
 cnt = 0
-board = [0 for _ in range(101)]
-stack = []
+dic = {}
 
 numbers = list(map(int,input().split()))
-#print(numbers)
+
 for number in numbers:
-    if cnt < n:
-        if number not in stack:
-            stack.insert(0,number)
-            board[number] += 1
-            cnt += 1
-        else:
-            board[number] += 1
+    if cnt >= n and number not in dic:
+        del dic[min(dic, key=lambda x: dic[x])]
+    if number in dic:
+        dic[number][0] += 1
     else:
-        if number not in stack: 
-            
-        else:
-            board[number] += 1
+        dic[number] = [1,cnt]
+        cnt += 1
 
-answer = stack
-
-answer.sort()
-
-for i in answer:
-    print(i, end=" ")
+answer = sorted(dic.items())
+for index, item in enumerate(answer):
+    if index == len(answer)-1:
+        print(item[0], end="")
+    else:
+        print(item[0], end=" ")
