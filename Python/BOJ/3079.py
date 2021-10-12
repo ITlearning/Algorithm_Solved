@@ -17,9 +17,11 @@ while start <= end:
     passing = 0
     for i in board:
         passing += mid // i
+    # 통과한 사람의 수가 입력받은 수보다 작을 경우
     if passing < m:
         start = mid + 1
     else:
+        # 클 경우
         total = mid
         end = mid - 1
 

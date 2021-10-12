@@ -1,4 +1,6 @@
 # 이차원 배열과 연산
+# 예제 중 3~4개만 통과
+# 아직 미완성
 import copy
 from collections import Counter
 r,c,k = map(int,input().split())
@@ -9,9 +11,9 @@ for i in range(3):
     board.append(tmp)
 cnt = 1
 while True:
-
     row = len(board)
     col = len(board[0])
+    # row가 더 크거나 같을 경우
     if row >= col:
         max_len = 0
         for row_line in range(len(board)):
@@ -20,6 +22,7 @@ while True:
                 if board[row_line][j] == 0:
                     continue
                 new_board.append(board[row_line][j])
+            
             line = Counter(new_board)
             sort = sorted(line.items(), key=lambda x: (x[1], x[0]))
             tmp = list(sort)
@@ -36,6 +39,7 @@ while True:
         for rebuild in range(len(board)):
             if len(board[rebuild]) < max_len:
                 board[rebuild] += [0] * (max_len - len(board[rebuild]))
+    # col이 더 클 경우
     elif row < col:
         max_len = 0
         rebuild_col_board = []
@@ -47,7 +51,6 @@ while True:
                 tmp.append(board[j][i])
             col_counter = Counter(tmp)
             sort_counter = sorted(col_counter.items(), key=lambda x: (x[1], x[0]))
-            #print(sort_counter)
 
             list_sort = list(sort_counter)
             rebase = []
@@ -60,16 +63,15 @@ while True:
             if len(rebase) < max_len:
                 rebase += [0] * (max_len - len(rebase))
             rebuild_col_board.append(rebase)
+            
         total = [[0 for _ in range(len(rebuild_col_board))] for _ in range(len(rebuild_col_board[0]))]
 
         for i in range(len(rebuild_col_board)):
             for j in range(len(rebuild_col_board[0])):
                 total[j][i] = rebuild_col_board[i][j]
-        #print(total)
+        
         board = copy.deepcopy(total)
-    for i in board:
-        print(i)
-    print()
+    
     if r-1 < len(board) and c-1 < len(board[0]) and board[r-1][c-1] == k:
         print(cnt)
         break
