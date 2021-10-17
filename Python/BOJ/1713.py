@@ -25,6 +25,7 @@ for number in numbers:
         dic[number] = [1,cnt]
         cnt += 1
 
+# 정렬 후 출력
 answer = sorted(dic.items())
 for index, item in enumerate(answer):
     if index == len(answer)-1:
