@@ -9,8 +9,6 @@ dy = [-1,0,1,0]
 for i in range(r):
     board.append(list(str(input())))
 
-# 2. 주위 바다 채우기
-
 delete = []
 
 for i in range(r):
