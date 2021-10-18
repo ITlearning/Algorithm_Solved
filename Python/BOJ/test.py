@@ -1,5 +1,8 @@
-dir = 0
+board = [1,2,3,4]
 
-for i in range(8):
-    dir = (dir + 1) % 4
-    print(dir)
+board.insert(0, board.pop())
+board.insert(0, board.pop())
+board.insert(0, board.pop())
+board.insert(0, board.pop())
+
+print(board)
