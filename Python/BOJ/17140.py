@@ -1,6 +1,4 @@
 # 이차원 배열과 연산
-# 예제 중 3~4개만 통과
-# 아직 미완성
 import copy
 from collections import Counter
 r,c,k = map(int,input().split())
