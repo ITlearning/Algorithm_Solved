@@ -11,6 +11,7 @@ for i in range(r):
 
 delete = []
 
+# 2. 돌리면서 X가 있을 경우 상하좌우 돌면서 3개 이상 바다가 존재하는 경우 추가
 for i in range(r):
     for j in range(c):
         if board[i][j] == "X":
