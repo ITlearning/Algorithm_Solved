@@ -14,7 +14,6 @@ def rebuild(board, command):
     # C연산으로 들어왔으면 board를 전체 뒤집어줌
     if command == "C":
         board = list(map(list, zip(*board)))
-    
     max_len = 0
     for row_line in range(len(board)):
         new_board = []
@@ -38,7 +37,7 @@ def rebuild(board, command):
             max_len = 100
         else: max_len = max(max_len, len(rebase)) # 그게 아니면 길이 긴 걸로 업데이트
         board[row_line] = copy.deepcopy(rebase[:100]) # 100 번째까지 복사해서 업데이트
-        
+
     # 크기 다른거 0 채우기
     for rebuild in range(len(board)):
         if len(board[rebuild]) < max_len:

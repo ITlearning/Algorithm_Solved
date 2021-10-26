@@ -27,15 +27,18 @@ for i in range(r):
                 cnt += 1
             if cnt >= 3:
                 delete.append([i,j])
-    
+
+# 3. 해수면 상승으로 지워질 섬을 .으로 변경
 for x,y in delete:
     board[x][y] = "."
 
+# 시작 x,y 끝 x,y 저장 변수
 start_x = 99999999999
 end_x = 0
 start_y = 99999999999
 end_y = 0
 
+# 4. 돌면서 X가 처음 시작하는 곳, 끝나는 곳을 저장
 for i in range(r):
     for j in range(c):
         if board[i][j] == "X":
@@ -44,7 +47,7 @@ for i in range(r):
             end_x = max(end_x,i)
             end_y = max(end_y,j)
 
-
+# 5. X의 시작과 끝으로 for문 돌려서 새로운 직사각형 만들기
 for i in range(start_x, end_x+1):
     for j in range(start_y, end_y+1):
         print(board[i][j], end="")
