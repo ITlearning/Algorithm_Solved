@@ -3,26 +3,24 @@ from collections import deque
 
 a,b = map(int,input().split())
 inf = 1e9
-board = [0] * (int(inf)+1)
-
-board[a] = 1
 q = deque()
-q.append(b)
+q.append([a,1])
 t = True
-cnt = 0
+c = 0
 while q:
-    x = q.popleft()
-    if x == a:
-        print(cnt+1)
+    #print(q)
+    x,cnt = q.popleft()
+    if x == b:
+        print(cnt)
+        t = False
         break
     if x*2 < inf:
-        board[x*2] += board[x] + 1
-        q.append(x*2)
+        q.append([x*2, cnt+1])
     tmp = str(x)+"1"
     if int(tmp) < inf:
-        board[int(tmp)] += board[x] + 1
-        q.append(int(tmp))
+        q.append([int(tmp), cnt+1])
 
+    c += 1
 
 if t:
     print(-1)
