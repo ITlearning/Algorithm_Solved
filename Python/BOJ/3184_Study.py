@@ -17,13 +17,16 @@ dist = [[0 for _ in range(C)] for _ in range(R)]
 
 for i in range(R):
     for j in range(C):
+        # 벽 이거나 이미 방문했으면 continue
         if board[i][j] == '#' or dist[i][j] == 1:
             continue
+
         q = deque()
         q.append([i,j])
         dist[i][j] = 1
         sh_cnt = 0
         wl_cnt = 0
+        
         while q:
             x,y = q.popleft()
             if board[x][y] == 'o':
@@ -40,7 +43,7 @@ for i in range(R):
                     continue
                 dist[nx][ny] = 1
                 q.append([nx,ny])
-        #print(sh_cnt, wl_cnt)
+
         if sh_cnt > wl_cnt:
             sheep += sh_cnt
         else:
