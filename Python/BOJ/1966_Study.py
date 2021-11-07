@@ -10,6 +10,7 @@ for i in range(t):
         q.append([number, i])
     max_num = max(q, key=lambda x: x[0])
     cnt = 1
+
     while True:
         # 지금 가장 큰 수부터 뽑을라고 하니까 조건
         if q[0][0] == max_num[0]:
@@ -22,6 +23,3 @@ for i in range(t):
             continue
         else:
             q.append(q.popleft())
-
-
-
