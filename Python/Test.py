@@ -10,7 +10,7 @@ def solution(bridge_length, weight, truck_weights):
     while len(bridge) != 0:
         num = bridge.popleft()
         total -= num
-        
+        print(total)
         cnt += 1
         
         if truck_weights:
