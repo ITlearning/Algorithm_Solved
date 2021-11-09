@@ -17,9 +17,11 @@ two_loma = list(input().rstrip())
 one_index = 0
 two_index = 0
 
+# 입력받은 첫 번째 로마숫자 -> 아라비아숫자
 while one_index < len(one_loma):
     tmp = one_loma[one_index:one_index+2]
     trans = "".join(tmp)
+    # 예외상황인 작은숫자가 앞에 있는 상황인지 아닌지 체크
     if trans in loma:
         num.append(loma[trans])
         one_index += 2
@@ -27,7 +29,7 @@ while one_index < len(one_loma):
         num.append(loma[one_loma[one_index]])
         one_index += 1
 
-
+# 입력받은 두 번째 로마숫자 -> 아라비아숫자
 while two_index < len(two_loma):
     tmp = two_loma[two_index:two_index+2]
     trans = "".join(tmp)
@@ -38,12 +40,13 @@ while two_index < len(two_loma):
         num.append(loma[two_loma[two_index]])
         two_index += 1
 
-answer = ""
-total_num = sum(num)
-control_index = 0
+answer = "" # 더한 숫자를 로마숫자로 바꾼 것을 저장할 String
+total_num = sum(num) # 모든 수의 합
+control_index = 0 # 인덱싱할 숫자
 
-
+# while문을 돌면서 숫자가 0이 될때까지 돌림
 while total_num != 0:
+    # 돌리는데, 가장 큰 수부터 빼면서 해당되는 문자 추가
     if total_num >= control[control_index]:
         answer += number[control[control_index]]
         total_num -= control[control_index]
