@@ -13,7 +13,9 @@ dy = [1,0,-1,0]
 for _ in range(k):
     a,b = map(int,input().split())
     board[a-1][b-1] = 1
+
 answer = 0
+
 for i in range(n):
     for j in range(m):
         if board[i][j] == 0:
@@ -33,6 +35,6 @@ for i in range(n):
                     board[nx][ny] = 2
                     q.append([nx,ny])
                     cnt += 1
-        #print(cnt)
+                
         answer = max(answer, cnt)
 print(answer)
