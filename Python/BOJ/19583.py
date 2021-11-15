@@ -20,11 +20,9 @@ while True:
         time, nick_name = input().split()
         time = time.split(":")
         time = int("".join(time))
-        #print(time, E)
         if time <= S or nick_name not in board:
             board[nick_name] = time
         else:
-            #print(board[nick_name], S)
             if board[nick_name] <= S:
                 if E <= time <= Q and nick_name not in check:
                     check.append(nick_name)

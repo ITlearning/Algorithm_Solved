@@ -20,7 +20,6 @@ a = 0
 while True:
     q_cnt = len(q)
     another_q = deque()
-    #print(another_q)
     new_board = copy.deepcopy(board)
     while q:
         x,y = q.popleft()
@@ -31,7 +30,7 @@ while True:
             if 0 <= nx < n and 0 <= ny < m:
                 if board[nx][ny] == 0:
                     cnt += 1
-        #print(board[x][y],cnt)
+
         if board[x][y] - cnt >= 0:
             new_board[x][y] -= cnt
         else:
@@ -57,7 +56,7 @@ while True:
                             if board[zx][zy] != 0 and visited[zx][zy] != 1:
                                 another_q.append([zx,zy])
                                 visited[zx][zy] = 1
-    
+
     t = True
     for x_index in range(n):
         for y_index in range(m):
