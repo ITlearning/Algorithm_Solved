@@ -28,7 +28,6 @@ for i in range(t):
             q.popleft()
             # 그리고 최신으로 제일 큰 수 갱신
             max_num = max(q, key=lambda x: x[0])
-            continue
         else:
             # 제일 큰 수 아니면 뒤로 넘기기
             q.append(q.popleft())

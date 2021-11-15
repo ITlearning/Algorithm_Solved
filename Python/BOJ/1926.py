@@ -12,7 +12,7 @@ for i in range(n):
     board.append(list(map(int,input().split())))
 dist = [[0]*(m) for _ in range(n)]
 
-cnt = 0 # 그림 개수
+t = 0 # 그림 개수
 big = 0 # 그림 중 가장 큰 수
 
 # bfs 구현 함수
@@ -35,10 +35,6 @@ def bfs(x,y):
             q.append((nx,ny))
             
     return cnt
-
-
-t = 0
-
 
 for i in range(n):
     for j in range(m):

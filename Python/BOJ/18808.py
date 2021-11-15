@@ -25,19 +25,18 @@ n,m,k = map(int,input().split())
 
 board = [[0 for _ in range(m)] for _ in range(n)]
 
-
 for _ in range(k):
     r,c = map(int,input().split())
     key = []
-
+    # 스티커 입력 받기
     for i in range(r):
         key.append(list(map(int,input().split())))
 
     turn = 1
     while True:
-        flag = False
+        flag = False # 붙이기 여부
         r,c = len(key), len(key[0])
-        # 키 크기만큼 가야 나머지 부분까지 탐색 가능하기 때문에 이렇게 함
+        # 키(스티커) 크기만큼 가야 나머지 부분까지 탐색 가능하기 때문에 이렇게 함
         # 그 이상으로 가면 인덱스 초과
         for i in range(n - (r-1)):
             for j in range(m - (c-1)):

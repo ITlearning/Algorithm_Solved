@@ -13,6 +13,7 @@ total = 0
 
 # 다리에 아-무것도 없을 때까지 ㅇㅇ
 while len(bridge) != 0:
+    print(bridge)
     num = bridge.popleft()
     total -= num
     cnt += 1
@@ -30,4 +31,5 @@ while len(bridge) != 0:
         else:
             # 아니면 0 추가. 이 0이 카운트가 되는것임.
             bridge.append(0)
+    
 print(cnt)
