@@ -1,5 +1,6 @@
 # 개강총회
-
+import sys
+input = sys.stdin.readline
 S,E,Q = input().split()
 
 S = S.split(":")
