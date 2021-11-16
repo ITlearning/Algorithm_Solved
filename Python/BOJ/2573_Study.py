@@ -5,9 +5,11 @@ from collections import deque
 import copy
 input = sys.stdin.readline
 n,m = map(int,input().split())
+
 board = []
 dx = [0,1,0,-1]
 dy = [1,0,-1,0]
+
 q = deque()
 
 for i in range(n):
@@ -16,6 +18,8 @@ for i in range(n):
     for index, num in enumerate(tmp):
         if num > 0:
             q.append([i, index])
+
+
 a = 0
 while True:
     q_cnt = len(q)

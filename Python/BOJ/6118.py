@@ -3,8 +3,9 @@ from collections import deque
 
 n,m = map(int,input().split())
 INF = int(1e9)
-board = [[] for _ in range(n+1)]
-distance = [INF] * (n+1)
+board = [[] for _ in range(n + 1)]
+
+distance = [INF] * (n + 1)
 
 # 입력받은 숫자의 인덱스들 연결 시켜주기
 for _ in range(m):
@@ -14,7 +15,7 @@ for _ in range(m):
     board[B_i].append(A_i)
 
 # 거리 측정용 리스트
-distance = [0]*(n+1)
+distance = [0]*(n + 1)
 
 q = deque()
 q.append(1)
@@ -33,4 +34,4 @@ while q:
 max_num = max(distance)
 
 # 제일큰 숫자가 위치한 인덱스, 그 위치까지의 거리, 그 위치와 같은 거리의 원소들의 개수
-print(distance.index(max_num), max_num-1, distance.count(max_num))
+print(distance.index(max_num), max_num - 1, distance.count(max_num))

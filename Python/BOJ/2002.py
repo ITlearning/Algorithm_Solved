@@ -1,6 +1,7 @@
 # 추월
 n = int(input())
 board = {}
+
 # 딕셔너리에 key를 입력받은 차 번호로, value를 순서로 저장
 for i in range(1,n+1):
     board[input()] = i

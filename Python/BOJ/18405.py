@@ -39,6 +39,5 @@ while time < s:
                     board[nx][ny] = pop_num
                     q.append([nx,ny, pop_num])
         cnt -= 1  # 전염 시켰으면 하나 빼기
-    cnt = len(q)  # 다 끝났다면 지금 새로 입력받은 위치의 바이러스들의 개수로 갱신
 
-print(board[answer_x-1][answer_y-1])
+print(board[answer_x - 1][answer_y - 1])

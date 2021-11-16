@@ -6,12 +6,11 @@ n = int(input())
 # DP용 리스트
 d = [0] * 100001
 
-for i in range(1,n+1):
+for i in range(1,n + 1):
     d[i] = i
-    for j in range(2,i+1):
+    for j in range(2,i + 1):
         if j*j <= i:
-
-            d[i] = min(d[i], d[i - (j*j)]+1)
+            d[i] = min(d[i], d[i - (j * j)] + 1)
 
 print(d[n])
 
