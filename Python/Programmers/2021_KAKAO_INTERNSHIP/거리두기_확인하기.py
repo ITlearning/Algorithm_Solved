@@ -54,3 +54,5 @@ def solution(places):
         else:
             answer.append(0)
     return answer
+
+# 50분
