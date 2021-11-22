@@ -15,17 +15,34 @@ for shop in shop_list:
     if shop[0] == guard_man_radius:
         answer += abs(shop[1] - guard_man_distance)
     else:
-        if shop[0] in [1,2]:
-            if guard_man_radius in [1,2]:
-                answer += min(abs(guard_man_distance + m + shop[1]), abs((n-guard_man_distance)+m+(n-shop[1])))
-                print(min(abs(guard_man_distance + m + shop[1]), abs((n-guard_man_distance)+m+(n-shop[1]))))
-            else:
-                answer += min(abs((m-guard_man_distance)+ shop[1]), abs((guard_man_distance+n+m+shop[1])))
-                print(min(abs(guard_man_distance + m + shop[1]), abs((n-guard_man_distance)+m+(n-shop[1]))))
-        elif shop[0] in [3,4]:
+        if shop[0] == 1:
+            if guard_man_radius == 2:
+                answer += min(shop[1]+m+guard_man_distance, (n-shop[1])+m+(n-guard_man_distance))
+            elif guard_man_radius == 3:
+                answer += min(shop[1]+guard_man_distance, (n-shop[1])+m+n+(m-guard_man_distance))
+            elif guard_man_radius == 4:
+                answer += min((n-shop[1])+guard_man_distance, shop[1]+m+n+(m-guard_man_distance))
+        elif shop[0] == 2:
             if guard_man_radius == 1:
-                answer += min(shop)
+                answer += min(shop[1]+m+guard_man_distance, (n-shop[1])+m+(n-guard_man_distance))
+            elif guard_man_radius == 3:
+                answer += min(shop[1]+(m-guard_man_distance), (n-shop[1])+m+n+guard_man_distance)
+            elif guard_man_radius == 4:
+                answer += min((n-shop[1])+(m-guard_man_distance), shop[1]+m+n+guard_man_distance)
+        elif shop[0] == 3:
+            if guard_man_radius == 1:
+                answer += min(shop[1]+guard_man_distance, (m-shop[1])+n+m+(n-guard_man_distance))
             elif guard_man_radius == 2:
-                answer += min((n - shop[1] + guard_man_distance, shop[1] + m + n + (m - guard_man_distance)))
+                answer += min((m-shop[1])+guard_man_distance, shop[1]+n+m+(n-guard_man_distance))
+            elif guard_man_radius == 4:
+                answer += min(shop[1]+n+guard_man_distance, (m-shop[1])+n+(m-guard_man_distance))
+        elif shop[0] == 4:
+            if guard_man_radius == 1:
+                answer += min(shop[1]+(n-guard_man_distance), (m-shop[1])+n+m+guard_man_distance)
+            elif guard_man_radius == 2:
+                answer += min((m-shop[1])+(n-guard_man_distance), shop[1]+n+m+guard_man_distance)
+            elif guard_man_radius == 3:
+                answer += min(shop[1]+n+guard_man_distance, (m-shop[1])+n+(m-guard_man_distance))
+
 
 print(answer)
