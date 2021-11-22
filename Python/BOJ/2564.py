@@ -44,5 +44,4 @@ for shop in shop_list:
             elif guard_man_radius == 3:
                 answer += min(shop[1]+n+guard_man_distance, (m-shop[1])+n+(m-guard_man_distance))
 
-
 print(answer)
