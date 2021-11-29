@@ -8,9 +8,10 @@ dp = [0 for _ in range(n+3)]
 
 dp[1] = board[1]
 dp[2] = board[1] + board[2]
-dp[3] = max(board[1] + board[3],board[2] + board[3])
+dp[3] = max(board[1] + board[3], board[2] + board[3])
 
 for i in range(4,n+1):
     dp[i] = max(dp[i-3] + board[i-1] + board[i], dp[i-2] + board[i])
-
+    # (1,3,4) , (2,4)
+    # (2,4,5) , (3,5)
 print(dp[n])

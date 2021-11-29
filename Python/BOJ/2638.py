@@ -41,6 +41,7 @@ while True:
                         air[nx][ny] = air[x][y]
                         air_deque.append([nx,ny])
             air_cnt += 1
+            
     new_board = deepcopy(board)
 
     while cheese:
