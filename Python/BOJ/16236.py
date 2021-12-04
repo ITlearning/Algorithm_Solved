@@ -9,13 +9,16 @@ dy = [0,-1,0,1]
 n = int(input())
 board = []
 
+# 보드 입력 받기
 for i in range(n):
     tmp = list(map(int,input().split()))
     board.append(tmp)
+
+
 q = deque()
 an = []
-start_x = 0
-start_y = 0
+start_x = 0 # 상어 시작 위치 X
+start_y = 0 # 상어 시작 위치 Y
 for x in range(n):
     for y in range(n):
         if board[x][y] == 9:
@@ -25,16 +28,18 @@ for x in range(n):
             board[x][y] = 0
             break
 
-shark_size = 2
-eat = 0
-move = 0
+shark_size = 2 # 상어 사이즈
+eat = 0        # 먹은 물고기 개수
+move = 0       # 움직인 거리
 
 while True:
     q = deque()
+    # 상어 위치, 시작 거리 기입
     q.append([start_x,start_y, 0])
     dist = [[False]*n for _ in range(n)]
     flag = 1e9
     an = []
+
     while q:
         x,y, cnt = q.popleft()
 
@@ -42,6 +47,7 @@ while True:
         # 따라서 먹고 난 뒤에는 종료
         if cnt > flag:
             break
+
         for i in range(4):
             nx = x + dx[i]
             ny = y + dy[i]
@@ -59,8 +65,8 @@ while True:
             dist[nx][ny] = True
             # 일단 모든 bfs 돈 값 덱에 저장
             q.append([nx,ny,cnt+1])
-
     # 그리고 난 뒤에 일단 상어보다 작은 건 다 an에 저장되어있을 테니, 그 중 오름차순으로 정렬해 작은 걸 + 해줌.
+    # 먹을 물고기들 정보 중 가장 앞에 있는 물고기 먹기
     if len(an) > 0:
         an.sort()
         x,y, m = an[0][0], an[0][1], an[0][2]

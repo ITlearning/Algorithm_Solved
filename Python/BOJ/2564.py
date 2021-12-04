@@ -12,9 +12,11 @@ guard_man_radius, guard_man_distance = map(int,input().split())
 
 answer = 0
 for shop in shop_list:
+    # 경비원과 매점의 위치가 같을 경우
     if shop[0] == guard_man_radius:
         answer += abs(shop[1] - guard_man_distance)
-    else:
+    else:  # 아닐 경우
+        # 모든 경우의 수 다 따져봄..ㅠㅅ  ㅠ
         if shop[0] == 1:
             if guard_man_radius == 2:
                 answer += min(shop[1]+m+guard_man_distance, (n-shop[1])+m+(n-guard_man_distance))
