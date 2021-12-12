@@ -30,7 +30,7 @@ for i in range(len(problem)):
         # 3곱하기
         number *= 3
     elif problem[i] == ']':
-        # 리스트레 추가 된 직전의 괄호가 짝이 맞지 않는 경우와, 아얘 없으면 종료
+        # 리스트에 추가 된 직전의 괄호가 짝이 맞지 않는 경우와, 아얘 없으면 종료
         if len(array) == 0 or array[-1] == '(':
             t = True
             break

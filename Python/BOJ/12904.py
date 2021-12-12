@@ -1,5 +1,4 @@
 # A와 B
-from collections import deque
 s = input()
 t = input()
 

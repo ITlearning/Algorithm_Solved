@@ -12,6 +12,7 @@ board = [[0 for _ in range(n)]for _ in range(n)]
 
 # 사과의 개수
 k = int(input())
+# 사과 입력받기
 for i in range(k):
     x,y = map(int,input().split())
     board[x-1][y-1] = 9
@@ -19,6 +20,7 @@ for i in range(k):
 # 뱀의 방향 전환 횟수
 l = int(input())
 route = deque()
+# 방향 전환 덱으로 입력받기
 for i in range(l):
     index, turn = input().split()
     route.append([int(index), turn])
