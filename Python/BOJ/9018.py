@@ -16,7 +16,6 @@ def permutation(text):
         else:
             break
 
-
     if left == -1:
         return "".join(text)
     
