@@ -53,7 +53,6 @@ while True:
                 else:
                     # 건너뛰기
                     continue
-    
     # 답 출력
     print("Problem "+str(cnt)+":", visited[n-1][n-1])
     cnt += 1
