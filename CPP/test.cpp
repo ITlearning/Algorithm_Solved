@@ -1,57 +1,81 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <string>
+#include <algorithm>
+#include <cstring>
 using namespace std;
-#include X first
-#include Y second
 
-int board[102][102];
-bool dist[102][102];
-int dx[4] = {-1,0,1,0};
-int dy[4] = {0,1,0,-1};
-int n,m,k;
-int x1,x2,y1,y2;
-int main() {
-	ios::sync_with_stdio(0);
-	cin.tie(0);
-	vector<int> v;
-	queue<pair<int,int> > Q;
+const int INF = 987654321;
+const int MAX = 200 + 20;
 
-	cin >> m >> n >> k;
-	for(int i = 0; i < k; i++) {
-		cin >> x1 >> y1 >> x2 >>y2;
+int cache[MAX][MAX][2];
+vector<int> numbers;
+vector<string> ops;
 
-		for(int j = x1; j < x2; j++) {
-			for(int k = y1; k < y2; k++) {
-				board[k][j] = 1;
-			}
+void init(vector<string> arr)
+{
+	for (int i = 0; i < arr.size(); i++)
+	{
+		if (i % 2 == 0)
+		{
+			numbers.push_back(stoi(arr[i]));
+		}
+		else
+		{
+			ops.push_back(arr[i]);
 		}
 	}
-	int cnt = 0;
-	for(int i = 0; i < m; i++) {
-		for(int j = 0; j < n; j++) {
-			if(board[i][j] == 1 || dist[i][j]) continue;
-			cnt++;
-			int box = 0;
-			Q.push({i,j});
-			dist[i][j] = 1;
-			while(!Q.empty()) {
-				box++;
-				auto cur = Q.front(); Q.pop();
-				for(int dir = 0; dir < 4; dir++) {
-					int nx = cur.X + dx[dir];
-					int ny = cur.Y + dy[dir];
-					if(nx < 0 || nx >= m || ny < 0 || ny >= n) continue;
-					if(dist[nx][ny] || board[nx][ny] == 1) continue;
-					dist[nx][ny] = 1;
-					Q.push({nx,ny});
-				}
-				v.push_back(box);
-			}
+}
+
+int func(int start, int end, bool isMax)
+{
+	int &result = cache[start][end][isMax];
+
+	if (result != -1)
+	{
+		return result;
+	}
+
+	if (start == end)
+	{
+		return result = numbers[start];
+	}
+
+	result = isMax ? -INF : INF;
+
+	for (int i = start; i < end; i++)
+	{
+		if (ops[i] == "-")
+		{
+			result = isMax ?
+				max(result, func(start, i, true) - func(i + 1, end, false)) :
+				min(result, func(start, i, false) - func(i + 1, end, true));
+		}
+		else
+		{
+			result = isMax ?
+				max(result, func(start, i, true) + func(i + 1, end, true)) :
+				min(result, func(start, i, false) + func(i + 1, end, false));
 		}
 	}
 
-	sort(v.begin(), v.end());
-	cout << cnt;
-	for(int i = 0; i < v.size(); i++) {
-		cout << v[i] << ' ';
-	}
+	return result;
+}
+
+int solution(vector<string> arr)
+{
+	init(arr);
+
+	memset(cache, -1, sizeof(cache));
+
+	return func(0, arr.size() / 2, true);
+}
+
+int main(void)
+{
+	vector<string> arr = { "1", "-", "3", "+", "5", "-", "8" };
+
+	cout << solution(arr) << "\n";
+
+	return 0;
 }
