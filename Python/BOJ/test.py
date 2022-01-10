@@ -1,8 +1,4 @@
-board = [1,2,3,4]
+d = ["1","2"]
 
-board.insert(0, board.pop())
-board.insert(0, board.pop())
-board.insert(0, board.pop())
-board.insert(0, board.pop())
-
-print(board)
+if d[0] > d[1]:
+    print("Iee")

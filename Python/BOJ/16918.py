@@ -1,6 +1,8 @@
 # 봄버맨
 from collections import deque
 from copy import deepcopy
+
+
 R,C,N = map(int,input().split())
 q = deque()
 board = []

@@ -1,5 +1,4 @@
 # 문자열 폭발
-from copy import deepcopy
 text = input()
 match_text = input().rstrip()
 stack = []
