@@ -10,19 +10,22 @@ dy = [0,-1,0,1]
 for i in range(n):
     board.append(list(map(int,input().rstrip())))
 
-# 2차원으로 만들긴 하는데, 2차원 안에 카운트, 벽을 부순 여부 확인 하는 용도의 2가지 리스트 만들어주기
-dist = [[[0]*2 for i in range(m)]for i in range(n)]
+# 3차원 안에 카운트, 벽을 부순 여부 확인 하는 용도의 2가지 리스트 만들어주기
+dist = [[[0] * 2 for i in range(m)]for i in range(n)]
 
 q = deque()
 q.append([0,0,1])
 
 dist[0][0][1] = 1
 answer = -2
+
 while q:
     x,y,w = q.popleft()
+
     if x == n-1 and y == m-1:
         answer = dist[x][y][w]
         break
+
     for i in range(4):
         nx = x + dx[i]
         ny = y + dy[i]
