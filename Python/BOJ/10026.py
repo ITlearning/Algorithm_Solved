@@ -47,4 +47,5 @@ for i in range(N):
         if dist[i][j] == 0 :
             bfs(i,j)
             cnt += 1
+
 print(cnt)
