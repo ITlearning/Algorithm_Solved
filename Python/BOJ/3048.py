@@ -13,6 +13,7 @@ for text in right_board:
     dic[text] = 1
 
 t = int(input())
+
 left_board.reverse()
 left_board.extend(right_board)
 
