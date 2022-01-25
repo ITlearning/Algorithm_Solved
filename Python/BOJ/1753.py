@@ -14,8 +14,8 @@ distance = [INF for _ in range(v+1)]
 
 for _ in range(e):
     a,b, num = map(int,input().split())
-
     graph[a].append([b,num])
+
 
 def djikstra(start):
     q = []

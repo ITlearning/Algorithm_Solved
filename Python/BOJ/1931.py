@@ -8,6 +8,7 @@ for i in range(N):
     tmp = list(map(int,input().split()))
     board.append(tmp)
 
+# 종료시간이 빠른순, 같으면 시작 시간이 빠른순 정렬
 board.sort(key= lambda x : (x[1], x[0]))
 
 cnt = 0   # 최대 횟수 카운트

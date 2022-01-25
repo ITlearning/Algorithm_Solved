@@ -10,22 +10,27 @@ air_cleaner = []
 board = []
 q = deque()
 
+# 입력받기
 for i in range(r):
     tmp = list(map(int,input().split()))
     for j in range(len(tmp)):
+        # -1 일경우엔 air_cleaner 리스트에 저장
         if tmp[j] == -1:
             air_cleaner.append(i)
+        # 0 아니고 다른 숫자면 덱에 저장
         elif tmp[j] != 0:
             q.append([i,j])
     
     board.append(tmp)
 
+# 덱에 먼지 위치 추가
 def reset():
     for i in range(r):
         for j in range(c):
             if board[i][j] != 0 and board[i][j] != -1:
                 q.append([i,j])
 
+# 먼지 분산
 def dust():
     board_tmp = [[0 for _ in range(c)] for _ in range(r)]
 
@@ -43,11 +48,13 @@ def dust():
         
         board_tmp[x][y] += num
     
+    # 새로 생긴 리스트에 공기청정기 위치에 -1 해주기
     board_tmp[air_cleaner[0]][0] = -1
     board_tmp[air_cleaner[1]][0] = -1
 
     return board_tmp
 
+# 공기청정기 작동
 def work_air_cleaner(board):
     cleaner_up = air_cleaner[0]
     cleaner_down = air_cleaner[1]
@@ -88,6 +95,7 @@ def work_air_cleaner(board):
     board[cleaner_up][1] = 0
     board[cleaner_down][1] = 0
 
+# 모든 먼지 값 구하기
 def check():
     cnt = 0
     for i in range(r):
@@ -97,6 +105,7 @@ def check():
 
 time = 0
 
+# 입력받은 t까지 계속 돌리기
 while time < t:
     board = dust()
     work_air_cleaner(board)
