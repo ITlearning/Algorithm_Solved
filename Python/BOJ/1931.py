@@ -4,6 +4,7 @@ input = sys.stdin.readline
 
 N = int(input())
 board = []
+
 for i in range(N):
     tmp = list(map(int,input().split()))
     board.append(tmp)

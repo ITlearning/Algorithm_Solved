@@ -11,6 +11,7 @@ for _ in range(v) :
     board.append([a,b])
 
 for i,j in board:
+    # get 함수를 사용하여 i,j의 value값을 가져와서 합쳐주기
     graph[i] = graph.get(i, []) + [j]
     graph[j] = graph.get(j, []) + [i]
 
@@ -21,6 +22,8 @@ def dfs(start, graph):
         if i not in dist:
             dist.append(i)
             dfs(i, graph)
+
 dist = []
 dfs(1, graph)
+
 print(len(dist)-1)

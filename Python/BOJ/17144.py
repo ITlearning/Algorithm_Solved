@@ -23,6 +23,8 @@ for i in range(r):
     
     board.append(tmp)
 
+# ------------------ 함수들 ---------------
+
 # 덱에 먼지 위치 추가
 def reset():
     for i in range(r):
@@ -46,6 +48,7 @@ def dust():
                     board_tmp[nx][ny] += divide_num
                     num -= divide_num
         
+        # 확산 시켜서 남은 수를 새로만든 리스트의 현재 위치에 더하기
         board_tmp[x][y] += num
     
     # 새로 생긴 리스트에 공기청정기 위치에 -1 해주기
@@ -102,9 +105,10 @@ def check():
         cnt += sum(board[i])
     
     return cnt + 2
-
+# ------------------ 함수들 ---------------
 time = 0
 
+# --------- 여기서 시작 ----------
 # 입력받은 t까지 계속 돌리기
 while time < t:
     board = dust()
