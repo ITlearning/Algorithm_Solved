@@ -1,8 +1,5 @@
 # 링
 
-from os import sep
-
-
 n = int(input())
 
 board = list(map(int,input().split()))

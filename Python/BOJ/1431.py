@@ -20,7 +20,6 @@ def plus_sum(text):
 
     return number
 
-
 board.sort(key=lambda x : (len(x), plus_sum(x), x))
 
 for b in board:

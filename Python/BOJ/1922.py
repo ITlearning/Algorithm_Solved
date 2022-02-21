@@ -30,6 +30,7 @@ def union(x,y):
 n = int(input())
 m = int(input())
 
+# 최소 
 board = [list(map(int,input().split())) for _ in range(m)]
 board = sorted(board, key=lambda x : x[2])
 
