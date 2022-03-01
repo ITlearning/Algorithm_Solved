@@ -20,6 +20,8 @@ while q:
         dist[s-1][c] = dist[s][c] + 1
         q.append((s-1,c))
 answer = -1
+
+
 for i in range(n+1):
     if dist[n][i] != -1:
         if answer == -1 or answer > dist[n][i]:

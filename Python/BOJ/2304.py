@@ -38,7 +38,7 @@ for i in range(max_index+1):
         # 갱신한 값으로 더하기
         left_total += left_max
     else: # 그게 아니고 작을 경우
-        # 가장 큰 수로 더해주기ma,board[i]
+        # 가장 큰 수로 더해주기 board[i]
         left_total += left_max
 
 # 2-2. 오른쪽 부분도 돌기 시작
