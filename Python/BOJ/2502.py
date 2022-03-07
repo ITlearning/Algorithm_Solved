@@ -15,6 +15,8 @@ def fibo(x):
 
 day, items = map(int,input().split())
 
+# 1 → 1 → 2 → 3 → 5 → 8 → 13 → . . .
+# 피보나치 수열을 형성 한다고 하는데 잘 모르겠음.. 더 이해하고 한번 더 풀어보겠음..!
 x = fibo(day-3)
 y = fibo(day-2)
 
